@@ -1,0 +1,126 @@
+{
+    "principales": [
+        {
+            "pregunta": "¿Qué es la morfología de un robot?",
+            "opciones": [
+                "Es la forma externa y estructura física del robot",
+                "Es el lenguaje de programación utilizado",
+                "Es el circuito eléctrico de control",
+                "Es la velocidad del efector final"
+            ],
+            "respuesta": "Es la forma externa y estructura física del robot"
+        },
+        {
+            "pregunta": "¿Qué coordenadas utilizan ejes ortogonales para representar posiciones?",
+            "opciones": [
+                "Coordenadas cartesianas",
+                "Coordenadas esféricas",
+                "Coordenadas cilíndricas",
+                "Coordenadas articulares"
+            ],
+            "respuesta": "Coordenadas cartesianas"
+        },
+        {
+            "pregunta": "¿Cuál es la función del espacio de trabajo de un robot?",
+            "opciones": [
+                "Es el espacio donde el robot puede alcanzar puntos válidos con su extremo",
+                "Es el espacio tridimensional computado",
+                "Es el código de programación del robot",
+                "Es la trayectoria de rotación del robot"
+            ],
+            "respuesta": "Es el espacio donde el robot puede alcanzar puntos válidos con su extremo"
+        },
+        {
+            "pregunta": "¿Qué tipo de coordenadas utiliza los ángulos de las articulaciones del robot?",
+            "opciones": [
+                "Coordenadas articulares",
+                "Coordenadas cartesianas",
+                "Coordenadas cilíndricas",
+                "Coordenadas polares"
+            ],
+            "respuesta": "Coordenadas articulares"
+        },
+        {
+            "pregunta": "¿Qué es la cinemática inversa en robótica?",
+            "opciones": [
+                "Es el cálculo de articulaciones para alcanzar una posición deseada",
+                "Es el análisis de materiales",
+                "Es la medición del voltaje del sensor",
+                "Es la forma del brazo robótico"
+            ],
+            "respuesta": "Es el cálculo de articulaciones para alcanzar una posición deseada"
+        },
+        {
+            "pregunta": "¿Qué determina el número de grados de libertad (GDL) en un robot?",
+            "opciones": [
+                "El número de movimientos independientes que puede realizar",
+                "La longitud de los cables",
+                "La batería utilizada",
+                "El tipo de pintura del robot"
+            ],
+            "respuesta": "El número de movimientos independientes que puede realizar"
+        },
+        {
+            "pregunta": "¿Qué representa un espacio de configuración?",
+            "opciones": [
+                "Conjunto de todas las posibles configuraciones de un robot",
+                "La distancia entre sensores",
+                "El consumo eléctrico del sistema",
+                "El volumen del efector final"
+            ],
+            "respuesta": "Conjunto de todas las posibles configuraciones de un robot"
+        },
+        {
+            "pregunta": "¿Qué significa que un robot sea redundante?",
+            "opciones": [
+                "Que tiene más grados de libertad de los necesarios",
+                "Que está duplicado en sistema",
+                "Que no se puede mover",
+                "Que repite siempre las mismas acciones"
+            ],
+            "respuesta": "Que tiene más grados de libertad de los necesarios"
+        },
+        {
+            "pregunta": "¿Qué son los ángulos RPY?",
+            "opciones": [
+                "Roll, Pitch y Yaw: rotaciones en X, Y, Z",
+                "Red, Power y Yoke",
+                "Resistencia, Potencia y Yugo",
+                "Rotación, Presión y Yunque"
+            ],
+            "respuesta": "Roll, Pitch y Yaw: rotaciones en X, Y, Z"
+        },
+        {
+            "pregunta": "¿Qué describe mejor el concepto de espacio de tarea?",
+            "opciones": [
+                "El espacio donde se especifican posiciones y orientaciones deseadas",
+                "El tamaño del microcontrolador",
+                "El nivel de voltaje de las bobinas",
+                "El número de sensores activos"
+            ],
+            "respuesta": "El espacio donde se especifican posiciones y orientaciones deseadas"
+        }
+    ],
+    "comodin": [
+        {
+            "pregunta": "¿Qué es un sistema local de coordenadas del robot?",
+            "opciones": [
+                "Un sistema donde el robot es el origen",
+                "El sistema de coordenadas de fábrica",
+                "La rotación absoluta del efector",
+                "El sistema de referencia del operador"
+            ],
+            "respuesta": "Un sistema donde el robot es el origen"
+        },
+        {
+            "pregunta": "¿Qué tipo de coordenadas utilizan distancia radial, ángulo y altura?",
+            "opciones": [
+                "Coordenadas cilíndricas",
+                "Coordenadas cartesianas",
+                "Coordenadas ortogonales",
+                "Coordenadas homogéneas"
+            ],
+            "respuesta": "Coordenadas cilíndricas"
+        }
+    ]
+}

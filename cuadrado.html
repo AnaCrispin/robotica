@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nivel Cuadrado</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('assets/image/todos.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            flex-direction: column;
+        }
+
+        #personaje {
+            width: 400px;
+            margin-bottom: 20px;
+            animation: flotar 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 8px #00ff00) drop-shadow(0 0 12px #00ff00);
+            border-radius: 20px;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        #pregunta-box {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 700px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        #pregunta {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .opcion {
+            background: #004d00;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .opcion:hover {
+            opacity: 0.9;
+        }
+
+        .correcta {
+            background-color: green !important;
+        }
+
+        .incorrecta {
+            background-color: red !important;
+        }
+
+        #bloqueo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .bloqueo-mensaje {
+            background: #111;
+            color: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+        }
+
+        .bloqueo-mensaje button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #00aa00;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 🎵 Música de fondo -->
+    <audio id="cuad-music" autoplay loop>
+        <source src="assets/sound/cuad.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Imagen del personaje -->
+    <img id="personaje" src="assets/image/pin1c.png" alt="personaje">
+
+    <!-- Cuadro de preguntas -->
+    <div id="pregunta-box">
+        <div id="pregunta">Cargando pregunta...</div>
+        <div id="opciones"></div>
+    </div>
+
+    <!-- ❌ Bloqueo de jugador -->
+    <div id="bloqueo" class="hidden">
+        <div class="bloqueo-mensaje" id="mensaje-bloqueo"></div>
+    </div>
+
+    <script>
+        let preguntas = [];
+        let index = 0;
+        let intentosFallidos = 0;
+        let puntaje = 0;
+        const jugador = JSON.parse(localStorage.getItem("jugador"));
+
+        if (!jugador) {
+            alert("❌ No se encontró información del jugador.");
+            window.location.href = "index.html";
+        } else {
+            const yaJugo = localStorage.getItem(`jugador_terminado_${jugador.id}`);
+            if (yaJugo === "true") {
+                const jugadorGuardado = JSON.parse(localStorage.getItem("jugador")) || { nombre: "Invitado", id: "-", puntos: 0 };
+                document.getElementById("mensaje-bloqueo").innerHTML = `
+          <h2>⚠️ Ya has completado este nivel</h2>
+          <p>No puedes volver a jugar.</p>
+          <p><strong>Jugador:</strong> ${jugadorGuardado.nombre}</p>
+          <p><strong>Número:</strong> ${jugadorGuardado.id}</p>
+          <p><strong>Puntaje final:</strong> ${jugadorGuardado.puntos || 0}/10</p>
+          <button onclick="location.href='index.html'">Volver al inicio</button>
+        `;
+                document.getElementById("bloqueo").classList.remove("hidden");
+            } else {
+                cargarPreguntas();
+            }
+        }
+
+        async function cargarPreguntas() {
+            const res = await fetch("preguntas_cuadrado.json");
+            const data = await res.json();
+            preguntas = data.principales.sort(() => 0.5 - Math.random()).slice(0, 10);
+            mostrarPregunta();
+        }
+
+        function mostrarPregunta() {
+            if (index >= preguntas.length) {
+                if (intentosFallidos <= 2) {
+                    mostrarComodines();
+                    return;
+                }
+                mostrarResultado();
+                return;
+            }
+
+            const pregunta = preguntas[index];
+            document.getElementById("pregunta").textContent = pregunta.pregunta;
+            const opcionesDiv = document.getElementById("opciones");
+            opcionesDiv.innerHTML = "";
+
+            pregunta.opciones.forEach(opcion => {
+                const btn = document.createElement("button");
+                btn.textContent = opcion;
+                btn.classList.add("opcion");
+                btn.onclick = () => verificarRespuesta(btn, opcion, pregunta.respuesta);
+                opcionesDiv.appendChild(btn);
+            });
+        }
+
+        function verificarRespuesta(boton, seleccion, correcta) {
+            const botones = document.querySelectorAll(".opcion");
+            botones.forEach(b => b.disabled = true);
+
+            if (seleccion === correcta) {
+                boton.classList.add("correcta");
+                puntaje++;
+            } else {
+                boton.classList.add("incorrecta");
+                botones.forEach(b => {
+                    if (b.textContent === correcta) {
+                        b.classList.add("correcta");
+                    }
+                });
+                intentosFallidos++;
+            }
+
+            setTimeout(() => {
+                index++;
+                mostrarPregunta();
+            }, 1600);
+        }
+
+        async function mostrarComodines() {
+            const res = await fetch("preguntas_cuadrado.json");
+            const data = await res.json();
+            const comodines = data.comodin.sort(() => 0.5 - Math.random());
+
+            preguntas = comodines;
+            index = 0;
+
+            document.getElementById("pregunta-box").innerHTML = `
+        <h2>🟢 Se activaron los COMODINES</h2>
+        <p>Te quedan preguntas extra para recuperar puntos.</p>
+        <div id="pregunta"></div>
+        <div id="opciones"></div>
+      `;
+
+            setTimeout(() => {
+                mostrarPregunta();
+            }, 2500);
+        }
+
+        function mostrarResultado() {
+            const jugador = JSON.parse(localStorage.getItem("jugador")) || { id: 0, nombre: "Invitado" };
+            const notaFinal = puntaje;
+
+            document.getElementById("pregunta-box").innerHTML = `
+        <h2>✅ Nivel completado</h2>
+        <p>Jugador: ${jugador.nombre}</p>
+        <p>Número: ${jugador.id}</p>
+        <p>Puntaje final: ${notaFinal}/10</p>
+      `;
+
+            jugador.puntos = notaFinal;
+            localStorage.setItem("jugador", JSON.stringify(jugador));
+            localStorage.setItem(`jugador_terminado_${jugador.id}`, "true");
+
+            const historial = JSON.parse(localStorage.getItem("resultados") || "[]");
+            historial.push({
+                nombre: jugador.nombre,
+                id: jugador.id,
+                puntos: notaFinal,
+                hora: new Date().toLocaleString()
+            });
+            localStorage.setItem("resultados", JSON.stringify(historial));
+        }
+
+        // Activar música al primer clic o toque
+        window.addEventListener("click", () => {
+            const music = document.getElementById("cuad-music");
+            if (music && music.paused) music.play().catch(() => { });
+        }, { once: true });
+
+        window.addEventListener("touchstart", () => {
+            const music = document.getElementById("cuad-music");
+            if (music && music.paused) music.play().catch(() => { });
+        }, { once: true });
+    </script>
+</body>
+
+</html>

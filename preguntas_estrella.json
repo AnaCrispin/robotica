@@ -1,0 +1,104 @@
+{
+    "principales": [
+        {
+            "pregunta": "¿Qué parte del robot se considera el sistema locomotor?",
+            "opciones": [
+                "Controlador",
+                "Estructura metálica",
+                "Sistema de tracción o ruedas",
+                "Sistema hidráulico"
+            ],
+            "respuesta": "Sistema de tracción o ruedas"
+        },
+        {
+            "pregunta": "¿Qué componente actúa directamente sobre el entorno en un robot?",
+            "opciones": [
+                "Sensor óptico",
+                "Actuador",
+                "Microcontrolador",
+                "Placa base"
+            ],
+            "respuesta": "Actuador"
+        },
+        {
+            "pregunta": "¿Qué herramienta permite analizar el movimiento de un robot a partir de sus articulaciones?",
+            "opciones": [
+                "Cinemática directa",
+                "PLC",
+                "Sensor óptico",
+                "Actuador hidráulico"
+            ],
+            "respuesta": "Cinemática directa"
+        },
+        {
+            "pregunta": "¿Qué es la cinemática directa en robótica?",
+            "opciones": [
+                "El cálculo de posiciones de los actuadores",
+                "La relación entre posiciones articulares y la posición final del efector",
+                "El diseño de un manipulador",
+                "El cálculo de la velocidad angular"
+            ],
+            "respuesta": "La relación entre posiciones articulares y la posición final del efector"
+        },
+        {
+            "pregunta": "¿Qué sistema controla el ascenso y descenso del ascensor en el laboratorio?",
+            "opciones": [
+                "PLC con sensores de piso",
+                "Motor de corriente continua",
+                "Sistema neumático",
+                "Cinemática inversa"
+            ],
+            "respuesta": "PLC con sensores de piso"
+        },
+        {
+            "pregunta": "¿Cuál es el principal objetivo de la cinemática inversa?",
+            "opciones": [
+                "Controlar la velocidad de las ruedas",
+                "Determinar la posición de cada articulación para alcanzar un punto",
+                "Medir la temperatura del sistema",
+                "Reducir la fricción"
+            ],
+            "respuesta": "Determinar la posición de cada articulación para alcanzar un punto"
+        },
+        {
+            "pregunta": "¿Cuál es una función del sistema sensorial en un robot?",
+            "opciones": [
+                "Mover los motores",
+                "Detectar estímulos del entorno",
+                "Controlar el sistema operativo",
+                "Generar energía eléctrica"
+            ],
+            "respuesta": "Detectar estímulos del entorno"
+        },
+        {
+            "pregunta": "¿Qué parte del robot procesa la información y toma decisiones?",
+            "opciones": [
+                "Controlador",
+                "Actuador",
+                "Sensor",
+                "Chasis"
+            ],
+            "respuesta": "Controlador"
+        },
+        {
+            "pregunta": "¿Cuál es la finalidad principal del estudio de la morfología robótica?",
+            "opciones": [
+                "Conocer las bases legales del uso de robots",
+                "Comprender la estructura mecánica y sus funciones",
+                "Implementar redes neuronales",
+                "Programar el encendido de LEDs"
+            ],
+            "respuesta": "Comprender la estructura mecánica y sus funciones"
+        },
+        {
+            "pregunta": "¿Qué elemento se encarga de detectar el piso en el modelo del ascensor?",
+            "opciones": [
+                "Sensor de proximidad",
+                "Motor",
+                "Actuador hidráulico",
+                "Microcontrolador"
+            ],
+            "respuesta": "Sensor de proximidad"
+        }
+    ]
+}

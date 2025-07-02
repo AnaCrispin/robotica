@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escoge tu carta</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #171717;
+        }
+
+        .left-side {
+            width: 30%;
+            height: 100%;
+            background: url(assets/image/dos.jpg) no-repeat center center;
+            background-size: cover;
+        }
+
+        .right-side {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #151515;
+            position: relative;
+            padding: 40px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .card {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #ff0066;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .card.revealed img {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 0 10px black;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .overlay.rojo {
+            background-color: #ff0066;
+        }
+
+        .overlay.verde {
+            background-color: #00cc44;
+        }
+
+        .card.revealed .overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card.disabled {
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .left-side,
+            .right-side {
+                flex: none;
+                width: 100%;
+                height: 50%;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                width: 140px;
+                height: 140px;
+            }
+
+            .overlay {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Música de fondo -->
+    <audio id="bg-music" loop>
+        <source src="assets/sound/rojo y verde.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="left-side"></div>
+    <div class="right-side">
+        <div class="grid-container" id="cartas-container">
+            <!-- Cartas se insertan desde JS -->
+        </div>
+    </div>
+
+    <script>
+        let yaSeleccionado = false;
+
+        const cartas = [
+            { img: "assets/image/gall1.jpg", destino: "cuadrado.html", color: "rojo" },
+            { img: "assets/image/gall2.jpg", destino: "paraguas.html", color: "verde" },
+            { img: "assets/image/gall3.jpg", destino: "estrella.html", color: "rojo" },
+            { img: "assets/image/gall4.jpg", destino: "triangulo.html", color: "verde" },
+        ];
+
+        // Barajar array
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function crearCartas() {
+            const container = document.getElementById("cartas-container");
+            const mezcladas = shuffle([...cartas]);
+
+            mezcladas.forEach(carta => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.onclick = () => revelar(card, carta.destino);
+
+                const overlay = document.createElement("div");
+                overlay.className = `overlay ${carta.color}`;
+                overlay.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="font-size: 28px;">ROBOTICA GAME</div>
+              <div style="font-size: 14px; margin-top: 6px;">ESCOGE SOLO UNO</div>
+          </div>
+        `;
+
+                const img = document.createElement("img");
+                img.src = carta.img;
+
+                card.appendChild(overlay);
+                card.appendChild(img);
+                container.appendChild(card);
+            });
+        }
+
+        function revelar(card, destino) {
+            if (yaSeleccionado) return;
+            yaSeleccionado = true;
+
+            card.classList.add("revealed");
+
+            const audio = document.getElementById("bg-music");
+            audio.pause();
+
+            document.querySelectorAll(".card").forEach(c => {
+                if (c !== card) c.classList.add("disabled");
+            });
+
+            setTimeout(() => {
+                window.location.href = destino;
+            }, 1500);
+        }
+
+        // Activar música al primer clic
+        window.addEventListener("click", () => {
+            const audio = document.getElementById("bg-music");
+            if (audio.paused) audio.play().catch(() => { });
+        }, { once: true });
+
+        crearCartas();
+    </script>
+</body>
+
+</html>

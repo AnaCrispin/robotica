@@ -1,0 +1,216 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-side {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    /* resto del 40% que usa el video */
+    height: 100%;
+    background: url("assets/image/mun.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.overlay {
+    height: 100%;
+    background-color: rgb(0 0 0 / 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+.login-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 35px;
+    border-radius: 15px;
+    text-align: center;
+    width: 330px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 15px #ff007f61, 0 0 25px #ff007f8c;
+    backdrop-filter: blur(5px);
+}
+
+.login-box h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.login-box span {
+    color: #ff007f;
+}
+
+.form-group label {
+    font-size: 16px;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #00d26a;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00d26a, 0 0 20px #d59090;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00d26a, 0 0 40px #00d26a;
+}
+
+
+button:hover {
+    background-color: #008f6a;
+}
+
+.notificacion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f0f0f;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    font-family: 'Orbitron', sans-serif;
+    /* o la que uses para el juego */
+    font-size: 18px;
+    z-index: 9999;
+    box-shadow: 0 0 15px #f0f;
+    opacity: 0.95;
+    transition: all 0.3s ease-in-out;
+}
+
+.notificacion.hidden {
+    display: none;
+}
+
+.notificacion.ok {
+    border: 2px solid lime;
+}
+
+.notificacion.error {
+    border: 2px solid red;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border: 2px solid #ff007f;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    font-family: 'Arial Black', sans-serif;
+    box-shadow: 0 0 20px #ff007f;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.modal-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnConfirmar {
+    background-color: #00ff9c;
+    color: #000;
+}
+
+#btnCancelar {
+    background-color: #ff004c;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

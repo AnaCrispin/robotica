@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Jugadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            padding: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #222;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: center;
+        }
+
+        th {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📊 Resultados Finales</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Número</th>
+                <th>Puntaje</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-resultados"></tbody>
+    </table>
+
+    <script>
+        const resultados = JSON.parse(localStorage.getItem("resultados") || "[]");
+        const tbody = document.getElementById("tabla-resultados");
+
+        resultados.forEach(r => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${r.nombre}</td>
+                <td>${r.id}</td>
+                <td>${r.puntos}</td>
+                <td>${r.hora}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    </script>
+</body>
+
+</html>

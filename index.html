@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squid Game Login</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Fondo de video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="assets/videos/log.mp4" type="video/mp4" />
+        Tu navegador no soporta video HTML5.
+    </video>
+
+    <!-- Imagen decorativa lateral (a la derecha) -->
+    <div class="image-side"></div>
+
+    <!-- Login -->
+    <div class="overlay">
+        <div class="login-box">
+            <h1 class="title"> ROBOTICA <span>GAME</span></h1>
+
+            <div class="form-group">
+                <label for="jugador">Jugador (número)</label>
+                <input type="number" id="jugador" placeholder="Ej: 222" />
+            </div>
+
+            <div class="form-group">
+                <label for="nickname">Nick (iniciales)</label>
+                <input type="text" id="nickname" placeholder="Ej: ACMQ" />
+            </div>
+
+            <button onclick="joinGame()">Ingresar</button>
+        </div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="login-audio" src="assets/sound/login.mp3"></audio>
+
+    <!-- Notificación -->
+    <div id="notificacion" class="notificacion hidden">
+        <p id="mensaje-noti"></p>
+    </div>
+
+    <script src="script.js"></script>
+    <div id="modalConfirmacion" class="modal hidden">
+        <div class="modal-content">
+            <p>⚠️ ¿Estás seguro de comenzar el juego?<br>Luego no hay vuelta atrás.</p>
+            <div class="modal-buttons">
+                <button id="btnConfirmar">Sí, comenzar</button>
+                <button id="btnCancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+{
+    "principales": [
+        {
+            "pregunta": "¿Qué es un actuador en robótica?",
+            "opciones": [
+                "Un sensor que mide la posición",
+                "Un componente que transforma energía en movimiento",
+                "Una interfaz gráfica",
+                "Un algoritmo de control"
+            ],
+            "respuesta": "Un componente que transforma energía en movimiento"
+        },
+        {
+            "pregunta": "¿Cuál es la función del chasis en un robot?",
+            "opciones": [
+                "Recoger señales del entorno",
+                "Conectar el robot a internet",
+                "Servir como estructura y soporte de componentes",
+                "Almacenar datos del sistema"
+            ],
+            "respuesta": "Servir como estructura y soporte de componentes"
+        },
+        {
+            "pregunta": "¿Qué tipo de sensor se utiliza para detectar distancia?",
+            "opciones": [
+                "Sensor de temperatura",
+                "Sensor ultrasónico",
+                "Acelerómetro",
+                "Giroscopio"
+            ],
+            "respuesta": "Sensor ultrasónico"
+        },
+        {
+            "pregunta": "¿Cuál es el objetivo de la programación en un robot?",
+            "opciones": [
+                "Reducir su tamaño",
+                "Hacerlo estéticamente atractivo",
+                "Definir su comportamiento",
+                "Aumentar su precio"
+            ],
+            "respuesta": "Definir su comportamiento"
+        },
+        {
+            "pregunta": "¿Qué es un sistema de control en robótica?",
+            "opciones": [
+                "Un diseño gráfico del robot",
+                "Un conjunto de reglas para manipular entradas y salidas",
+                "Una red social para robots",
+                "Un manual de mantenimiento"
+            ],
+            "respuesta": "Un conjunto de reglas para manipular entradas y salidas"
+        },
+        {
+            "pregunta": "¿Qué lenguaje se usa comúnmente para programar robots Arduino?",
+            "opciones": [
+                "Python",
+                "Java",
+                "C/C++",
+                "Scratch"
+            ],
+            "respuesta": "C/C++"
+        },
+        {
+            "pregunta": "¿Qué función cumple un sensor infrarrojo en robótica?",
+            "opciones": [
+                "Detectar temperatura interna",
+                "Evitar obstáculos",
+                "Enviar correos",
+                "Grabar video"
+            ],
+            "respuesta": "Evitar obstáculos"
+        },
+        {
+            "pregunta": "¿Qué se entiende por diseño mecánico en robótica?",
+            "opciones": [
+                "La conexión de sensores",
+                "La estética del robot",
+                "La estructura física del robot",
+                "El sistema operativo utilizado"
+            ],
+            "respuesta": "La estructura física del robot"
+        },
+        {
+            "pregunta": "¿Qué se entiende por autonomía en un robot?",
+            "opciones": [
+                "Capacidad de moverse sin intervención humana",
+                "Capacidad de conectarse a Wi-Fi",
+                "Tiempo de vida útil",
+                "Tamaño reducido"
+            ],
+            "respuesta": "Capacidad de moverse sin intervención humana"
+        },
+        {
+            "pregunta": "¿Cuál es la utilidad de los motores en un robot móvil?",
+            "opciones": [
+                "Controlar la temperatura",
+                "Detectar colores",
+                "Proporcionar movimiento",
+                "Ejecutar código"
+            ],
+            "respuesta": "Proporcionar movimiento"
+        },
+        {
+            "pregunta": "¿Qué es la cinemática directa en robótica?",
+            "opciones": [
+                "Calcular el camino óptimo",
+                "Determinar la posición final del efector a partir de las articulaciones",
+                "Medir la velocidad de internet",
+                "Observar sensores"
+            ],
+            "respuesta": "Determinar la posición final del efector a partir de las articulaciones"
+        },
+        {
+            "pregunta": "¿Qué es el grado de libertad en un robot?",
+            "opciones": [
+                "Número de sensores conectados",
+                "Cantidad de movimientos independientes posibles",
+                "Velocidad máxima del robot",
+                "Nivel de batería"
+            ],
+            "respuesta": "Cantidad de movimientos independientes posibles"
+        }
+    ],
+    "comodin": [
+        {
+            "pregunta": "¿Qué tipo de motor es ideal para precisión en movimientos?",
+            "opciones": [
+                "Motor DC",
+                "Motor de pasos",
+                "Motor de explosión",
+                "Motor neumático"
+            ],
+            "respuesta": "Motor de pasos"
+        },
+        {
+            "pregunta": "¿Qué componente permite al robot 'ver' su entorno?",
+            "opciones": [
+                "Pantalla",
+                "Cámara o sensor visual",
+                "Altavoz",
+                "Batería"
+            ],
+            "respuesta": "Cámara o sensor visual"
+        }
+    ]
+}

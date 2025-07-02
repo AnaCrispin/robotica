@@ -1,0 +1,114 @@
+{
+    "principales": [
+        {
+            "pregunta": "¿Qué es un robot industrial?",
+            "opciones": [
+                "Un juguete automático",
+                "Una máquina programable para tareas",
+                "Un ordenador portátil"
+            ],
+            "respuesta": "Una máquina programable para tareas"
+        },
+        {
+            "pregunta": "¿Cuál es una ventaja de usar robots en la industria?",
+            "opciones": [
+                "Mayor cansancio",
+                "Mayor velocidad y precisión",
+                "Menor productividad"
+            ],
+            "respuesta": "Mayor velocidad y precisión"
+        },
+        {
+            "pregunta": "¿Qué parte permite el movimiento en un robot?",
+            "opciones": [
+                "Sensor",
+                "Actuador",
+                "Pantalla"
+            ],
+            "respuesta": "Actuador"
+        },
+        {
+            "pregunta": "¿Qué es un sensor en robótica?",
+            "opciones": [
+                "Un motor",
+                "Un dispositivo de entrada de datos",
+                "Una lámpara"
+            ],
+            "respuesta": "Un dispositivo de entrada de datos"
+        },
+        {
+            "pregunta": "¿Qué controla las decisiones del robot?",
+            "opciones": [
+                "Controlador o CPU",
+                "Ruedas",
+                "Cables"
+            ],
+            "respuesta": "Controlador o CPU"
+        },
+        {
+            "pregunta": "¿Qué tipo de robot sigue una línea en el suelo?",
+            "opciones": [
+                "Robot explorador",
+                "Robot seguidor de línea",
+                "Robot nadador"
+            ],
+            "respuesta": "Robot seguidor de línea"
+        },
+        {
+            "pregunta": "¿Cuál es un uso común de robots industriales?",
+            "opciones": [
+                "Pintar autos",
+                "Hacer tareas escolares",
+                "Lavar ropa"
+            ],
+            "respuesta": "Pintar autos"
+        },
+        {
+            "pregunta": "¿Qué lenguaje se usa para programar robots?",
+            "opciones": [
+                "Python",
+                "HTML",
+                "Photoshop"
+            ],
+            "respuesta": "Python"
+        },
+        {
+            "pregunta": "¿Qué tipo de energía usan comúnmente los robots?",
+            "opciones": [
+                "Energía solar o eléctrica",
+                "Carbón",
+                "Gasolina"
+            ],
+            "respuesta": "Energía solar o eléctrica"
+        },
+        {
+            "pregunta": "¿Qué función cumple un brazo robótico?",
+            "opciones": [
+                "Sujetar o mover objetos",
+                "Hablar",
+                "Jugar videojuegos"
+            ],
+            "respuesta": "Sujetar o mover objetos"
+        }
+    ],
+    "comodin": [
+        {
+            "pregunta": "¿Qué es la automatización industrial?",
+            "opciones": [
+                "Decoración de fábricas",
+                "Uso de tecnología para controlar procesos",
+                "Pintar con máquinas"
+            ],
+            "respuesta": "Uso de tecnología para controlar procesos"
+        },
+        {
+            "pregunta": "¿Qué es un PLC?",
+            "opciones": [
+                "Un tipo de robot",
+                "Un controlador lógico programable",
+                "Un circuito musical"
+            ],
+            "respuesta": "Un controlador lógico programable"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 222,
+        "nombre": "Ana Cristina Mamani Quispe",
+        "nick": "ACMQ",
+        "puntos": 0
+    },
+    {
+        "id": 333,
+        "nombre": "Ramiro Tancara Condori",
+        "nick": "RTC",
+        "puntos": 0
+    },
+    {
+        "id": 444,
+        "nombre": "Margarita Quispe Tinta",
+        "nick": "MQT",
+        "puntos": 0
+    }
+]
