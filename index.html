@@ -5,10 +5,1013 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Squid Game Login</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background: #000;
+        }
+
+        /* Video de fondo mejorado */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+            filter: brightness(0.4) contrast(1.2);
+        }
+
+        /* Canvas para partículas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Imagen lateral mejorada */
+        .image-side {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(16, 185, 129, 0.3));
+            backdrop-filter: blur(10px);
+            z-index: 3;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+            opacity: 0.6;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Overlay mejorado */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+        }
+
+        /* Caja de login mejorada */
+        .login-box {
+
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 24px;
+            padding: 50px 45px;
+            width: 450px;
+            max-width: 90%;
+            box-shadow:
+                0 0 60px rgba(220, 38, 38, 0.4),
+                0 0 120px rgba(220, 38, 38, 0.2),
+                inset 0 0 40px rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            position: relative;
+            animation: fadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.85) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    rgba(220, 38, 38, 0.6),
+                    rgba(16, 185, 129, 0.6),
+                    rgba(220, 38, 38, 0.6));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0;
+            filter: blur(20px);
+            transition: opacity 0.5s;
+            animation: rotateBorder 4s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .login-box:hover::before {
+            opacity: 1;
+        }
+
+        /* Imagen de guardias */
+        .guardians-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: -30px auto 30px;
+            border-radius: 12px;
+
+            animation: floatImage 3s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Título mejorado con efecto glitch */
+        .title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow:
+                0 0 10px rgba(220, 38, 38, 0.8),
+                0 0 20px rgba(220, 38, 38, 0.6),
+                0 0 30px rgba(220, 38, 38, 0.4),
+                3px 3px 0 rgba(220, 38, 38, 0.3);
+            position: relative;
+            animation: glitchTitle 3s infinite;
+        }
+
+        @keyframes glitchTitle {
+
+            0%,
+            90%,
+            100% {
+                transform: translate(0);
+                text-shadow:
+                    0 0 10px rgba(220, 38, 38, 0.8),
+                    0 0 20px rgba(220, 38, 38, 0.6),
+                    3px 3px 0 rgba(220, 38, 38, 0.3);
+            }
+
+            92% {
+                transform: translate(-2px, 2px);
+                text-shadow:
+                    2px 0 0 rgba(16, 185, 129, 0.8),
+                    -2px 0 0 rgba(220, 38, 38, 0.8);
+            }
+
+            94% {
+                transform: translate(2px, -2px);
+                text-shadow:
+                    -2px 0 0 rgba(16, 185, 129, 0.8),
+                    2px 0 0 rgba(220, 38, 38, 0.8);
+            }
+        }
+
+        .title span {
+            color: #10b981;
+            display: inline-block;
+            animation: colorShift 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes colorShift {
+            0% {
+                color: #10b981;
+                filter: drop-shadow(0 0 10px #10b981);
+            }
+
+            100% {
+                color: #dc2626;
+                filter: drop-shadow(0 0 10px #dc2626);
+            }
+        }
+
+        /* Form group mejorado */
+        .form-group {
+            margin-bottom: 28px;
+            animation: slideInLeft 0.6s ease-out backwards;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            color: #e5e7eb;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            border-radius: 12px;
+            background: rgba(30, 30, 45, 0.8);
+            color: #fff;
+            outline: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .form-group input:focus {
+            border-color: #dc2626;
+            background: rgba(40, 40, 55, 0.9);
+            box-shadow:
+                0 0 20px rgba(220, 38, 38, 0.5),
+                inset 0 2px 10px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(156, 163, 175, 0.6);
+            font-weight: 400;
+        }
+
+        /* Botón mejorado con efecto ripple */
+        button {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 8px 25px rgba(220, 38, 38, 0.4),
+                0 0 0 2px rgba(220, 38, 38, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideInLeft 0.6s ease-out 0.3s backwards;
+        }
+
+        button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #b91c1c, #991b1b);
+            box-shadow:
+                0 12px 35px rgba(220, 38, 38, 0.6),
+                0 0 0 4px rgba(220, 38, 38, 0.3);
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow:
+                0 5px 15px rgba(220, 38, 38, 0.4),
+                0 0 0 2px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Notificación mejorada */
+        .notificacion {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.95), rgba(185, 28, 28, 0.95));
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 14px;
+            box-shadow:
+                0 10px 40px rgba(220, 38, 38, 0.5),
+                0 0 0 2px rgba(220, 38, 38, 0.3);
+            z-index: 1000;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            animation: slideInFromRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notificacion.hidden {
+            display: none;
+        }
+
+        .notificacion p {
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal mejorado */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: rgba(15, 15, 25, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 45px 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 100px rgba(220, 38, 38, 0.3),
+                inset 0 0 40px rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(220, 38, 38, 0.4);
+            animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content p {
+            color: #fff;
+            font-size: 1.25rem;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-buttons button {
+            width: auto;
+            padding: 14px 35px;
+            font-size: 1rem;
+            animation: none;
+        }
+
+        #btnConfirmar {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow:
+                0 8px 25px rgba(16, 185, 129, 0.4),
+                0 0 0 2px rgba(16, 185, 129, 0.2);
+        }
+
+        #btnConfirmar:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow:
+                0 12px 35px rgba(16, 185, 129, 0.6),
+                0 0 0 4px rgba(16, 185, 129, 0.3);
+        }
+
+        #btnCancelar {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            box-shadow:
+                0 8px 25px rgba(107, 114, 128, 0.4),
+                0 0 0 2px rgba(107, 114, 128, 0.2);
+        }
+
+        #btnCancelar:hover {
+            background: linear-gradient(135deg, #4b5563, #374151);
+            box-shadow:
+                0 12px 35px rgba(107, 114, 128, 0.6),
+                0 0 0 4px rgba(107, 114, 128, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-box {
+                padding: 40px 30px;
+                width: 95%;
+            }
+
+            .title {
+                font-size: 2.2rem;
+            }
+
+            .image-side {
+                width: 30%;
+                opacity: 0.4;
+            }
+
+            .notificacion {
+                top: 20px;
+                right: 20px;
+                left: 20px;
+                padding: 15px 20px;
+                font-size: 0.9rem;
+            }
+
+            .guardians-image {
+                max-width: 300px;
+                margin: -20px auto 20px;
+            }
+        }
+
+        /* Efectos de carga */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Modal mejorado */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeInModal 0.4s ease-out;
+        }
+
+        @keyframes fadeInModal {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+
+            to {
+                opacity: 1;
+                backdrop-filter: blur(12px);
+            }
+        }
+
+        .modal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, rgba(20, 20, 35, 0.98), rgba(15, 15, 25, 0.98));
+            backdrop-filter: blur(20px);
+            padding: 50px 45px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.9),
+                0 0 100px rgba(220, 38, 38, 0.4),
+                inset 0 0 60px rgba(255, 255, 255, 0.02);
+            border: 3px solid rgba(220, 38, 38, 0.5);
+            position: relative;
+            animation: scaleInModal 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent,
+                    rgba(220, 38, 38, 0.1),
+                    transparent);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateY(-100%) translateX(-100%);
+            }
+
+            100% {
+                transform: translateY(100%) translateX(100%);
+            }
+        }
+
+        @keyframes scaleInModal {
+            0% {
+                transform: scale(0.5) rotateX(45deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05) rotateX(0deg);
+            }
+
+            100% {
+                transform: scale(1) rotateX(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Icono de advertencia */
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 0 40px rgba(220, 38, 38, 0.6),
+                inset 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 60px rgba(220, 38, 38, 0.9);
+            }
+        }
+
+        .modal-icon svg {
+            width: 45px;
+            height: 45px;
+            color: #fff;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+            animation: shake 2s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(-5deg);
+            }
+
+            20% {
+                transform: rotate(5deg);
+            }
+
+            30% {
+                transform: rotate(-5deg);
+            }
+
+            40% {
+                transform: rotate(5deg);
+            }
+
+            50%,
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Título del modal */
+        .modal-title {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow:
+                0 0 20px rgba(220, 38, 38, 0.8),
+                0 4px 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-text {
+            color: #e5e7eb;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-subtext {
+            display: block;
+            color: #10b981;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            font-weight: 600;
+            text-shadow:
+                0 0 10px rgba(16, 185, 129, 0.6),
+                0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Botones del modal mejorados */
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-buttons button {
+            width: auto;
+            min-width: 160px;
+            padding: 16px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .btn-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            pointer-events: none;
+        }
+
+        .modal-buttons button:hover .btn-glow {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Botón Confirmar */
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            box-shadow:
+                0 8px 25px rgba(16, 185, 129, 0.5),
+                0 0 0 2px rgba(16, 185, 129, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow:
+                0 12px 35px rgba(16, 185, 129, 0.7),
+                0 0 0 4px rgba(16, 185, 129, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Botón Cancelar */
+        .btn-secondary {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            color: #fff;
+            box-shadow:
+                0 8px 25px rgba(107, 114, 128, 0.4),
+                0 0 0 2px rgba(107, 114, 128, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #4b5563, #374151);
+            box-shadow:
+                0 12px 35px rgba(107, 114, 128, 0.6),
+                0 0 0 4px rgba(107, 114, 128, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 40px 30px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .modal-buttons button {
+                width: 100%;
+            }
+        }
+
+        /* Imagen flotante arriba del modal */
+        .modal-top-image {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 160px;
+            z-index: 10;
+            animation: floatTopImage 3s ease-in-out infinite;
+        }
+
+        .modal-top-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 40px rgba(220, 38, 38, 0.8));
+            animation: rotateImage 6s linear infinite;
+        }
+
+        @keyframes floatTopImage {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0px);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+        }
+
+        @keyframes rotateImage {
+            0% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(-5deg);
+            }
+        }
+
+        /* Ajustar modal-content para dar espacio */
+        .modal {
+            position: relative;
+        }
+
+        .modal-content {
+            margin-top: 60px;
+            /* Da espacio para la imagen de arriba */
+        }
+
+        /* Imagen del modal */
+        .modal-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 0 50px rgba(220, 38, 38, 0.6),
+                0 8px 32px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 4px solid rgba(220, 38, 38, 0.5);
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(185, 28, 28, 0.2));
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: shake 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 50px rgba(220, 38, 38, 0.6);
+            }
+
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 0 70px rgba(220, 38, 38, 0.9);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            10% {
+                transform: rotate(-3deg) scale(1.05);
+            }
+
+            20% {
+                transform: rotate(3deg) scale(1.05);
+            }
+
+            30% {
+                transform: rotate(-3deg) scale(1.05);
+            }
+
+            40% {
+                transform: rotate(3deg) scale(1.05);
+            }
+
+            50%,
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Canvas para partículas (NUEVO) -->
+    <canvas id="particles-canvas"></canvas>
+
     <!-- Fondo de video -->
     <video autoplay muted loop id="bg-video">
         <source src="assets/videos/log.mp4" type="video/mp4" />
@@ -21,7 +1024,10 @@
     <!-- Login -->
     <div class="overlay">
         <div class="login-box">
-            <h1 class="title"> ROBOTICA <span>GAME</span></h1>
+            <!-- Imagen de guardias -->
+            <img src="assets/image/cabeza.jpg" alt="Guardians" class="guardians-image">
+
+            <h1 class="title">U-TIC <span>GAME</span></h1>
 
             <div class="form-group">
                 <label for="jugador">Jugador (número)</label>
@@ -33,29 +1039,182 @@
                 <input type="text" id="nickname" placeholder="Ej: ACMQ" />
             </div>
 
-            <button onclick="joinGame()">Ingresar</button>
+            <button onclick="joinGame()"><span>Ingresar</span></button>
         </div>
     </div>
 
     <!-- Audio -->
     <audio id="login-audio" src="assets/sound/login.mp3"></audio>
+    <audio id="bg-music" loop>
+        <source src="assets/sound/rojo y verde.mp3" type="audio/mpeg" />
+    </audio>
 
     <!-- Notificación -->
     <div id="notificacion" class="notificacion hidden">
         <p id="mensaje-noti"></p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Modal de confirmación -->
     <div id="modalConfirmacion" class="modal hidden">
         <div class="modal-content">
-            <p>⚠️ ¿Estás seguro de comenzar el juego?<br>Luego no hay vuelta atrás.</p>
+            <!-- Imagen en lugar del icono SVG -->
+            <div class="modal-image">
+                <img src="assets/image/warning.png" alt="Advertencia">
+            </div>
+
+            <!-- Título y mensaje -->
+            <h2 class="modal-title">¿COMENZAR EL JUEGO?</h2>
+            <p class="modal-text">
+                Una vez que entres, no habrá vuelta atrás.<br>
+                <span class="modal-subtext">Prepárate para el desafío.</span>
+            </p>
+
+            <!-- Botones mejorados -->
             <div class="modal-buttons">
-                <button id="btnConfirmar">Sí, comenzar</button>
-                <button id="btnCancelar">Cancelar</button>
+                <button id="btnConfirmar" class="btn-primary">
+                    <span class="btn-icon">▶</span>
+                    <span>Sí, comenzar</span>
+                    <span class="btn-glow"></span>
+                </button>
+                <button id="btnCancelar" class="btn-secondary">
+                    <span class="btn-icon">✕</span>
+                    <span>Cancelar</span>
+                    <span class="btn-glow"></span>
+                </button>
             </div>
         </div>
     </div>
 
+    <script>
+        // Sistema de partículas mejorado
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? 'rgba(220, 38, 38, 0.6)' : 'rgba(16, 185, 129, 0.6)';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) {
+                    this.speedX = -this.speedX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.speedY = -this.speedY;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Efecto de brillo
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        const particlesArray = [];
+        const numberOfParticles = 80;
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+
+                // Conectar partículas cercanas
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(220, 38, 38, ${0.2 - distance / 500})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Placeholder para la función joinGame (mantén tu lógica original aquí)
+        function joinGame() {
+            const jugador = document.getElementById('jugador').value;
+            const nickname = document.getElementById('nickname').value;
+
+            if (!jugador || !nickname) {
+                mostrarNotificacion('Por favor completa todos los campos');
+                return;
+            }
+            const bgMusic = document.getElementById('bg-music');
+            bgMusic.play().catch(e => console.log('Error al reproducir música:', e));
+
+            // Aquí va tu lógica original
+            document.getElementById('modalConfirmacion').classList.remove('hidden');
+        }
+
+        function mostrarNotificacion(mensaje) {
+            const noti = document.getElementById('notificacion');
+            const mensajeNoti = document.getElementById('mensaje-noti');
+            mensajeNoti.textContent = mensaje;
+            noti.classList.remove('hidden');
+
+            setTimeout(() => {
+                noti.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Event listeners para el modal
+        document.getElementById('btnConfirmar')?.addEventListener('click', () => {
+            // Aquí va tu lógica de confirmación original
+            document.getElementById('modalConfirmacion').classList.add('hidden');
+            mostrarNotificacion('¡Juego iniciado!');
+        });
+
+        document.getElementById('btnCancelar')?.addEventListener('click', () => {
+            document.getElementById('modalConfirmacion').classList.add('hidden');
+        });
+
+        // Efecto de escritura en inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                e.target.style.letterSpacing = e.target.value.length > 0 ? '2px' : '0px';
+            });
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

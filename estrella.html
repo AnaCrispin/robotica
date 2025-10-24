@@ -4,127 +4,633 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nivel Estrella</title>
+    <title>Nivel Cuadrado</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: url('assets/image/todos.jpg') no-repeat center center fixed;
-            background-size: cover;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Arial', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             color: white;
             flex-direction: column;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
         }
 
-        #personaje {
-            width: 400px;
-            margin-bottom: 20px;
-            animation: flotar 2s infinite ease-in-out;
-            filter: drop-shadow(0 0 8px #ffcc00) drop-shadow(0 0 12px #ffcc00);
+        /* Fondo mejorado */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/image/todos.jpg') no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.35) contrast(1.2) saturate(1.1);
+            z-index: -3;
+        }
+
+        /* Viñeta oscura */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Manchas de sangre */
+        .blood-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(ellipse 200px 180px at 15% 20%, rgba(139, 0, 0, 0.6) 0%, rgba(100, 0, 0, 0.3) 30%, transparent 60%),
+                radial-gradient(ellipse 250px 200px at 85% 30%, rgba(120, 0, 0, 0.5) 0%, rgba(80, 0, 0, 0.2) 35%, transparent 65%),
+                radial-gradient(ellipse 180px 220px at 25% 75%, rgba(139, 0, 0, 0.55) 0%, rgba(100, 0, 0, 0.25) 30%, transparent 60%),
+                radial-gradient(ellipse 220px 190px at 70% 85%, rgba(120, 0, 0, 0.5) 0%, rgba(90, 0, 0, 0.2) 32%, transparent 62%);
+            filter: blur(5px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.7;
+            animation: bloodPulse 10s ease-in-out infinite;
+        }
+
+        @keyframes bloodPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
+
+        /* Canvas para gotas de sangre */
+        #blood-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* CONTADOR DE PUNTOS */
+        .score-display {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.15), rgba(0, 200, 0, 0.1));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 0, 0.4);
             border-radius: 20px;
+            padding: 15px 30px;
+            z-index: 100;
+            box-shadow:
+                0 0 40px rgba(0, 255, 0, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: scoreFloat 3s ease-in-out infinite;
         }
 
-        @keyframes flotar {
-            0% {
+        @keyframes scoreFloat {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-5px);
+            }
+        }
+
+        .score-display .score-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .score-display .score-value {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00ff00;
+            text-shadow:
+                0 0 20px rgba(0, 255, 0, 0.8),
+                0 0 40px rgba(0, 255, 0, 0.4);
+            letter-spacing: 2px;
+        }
+
+        /* PERSONAJE ÉPICO */
+        #personaje {
+            width: 406px;
+            max-width: 90vw;
+            /* margin-bottom: 30px; */
+            animation: floatPersonaje 3s infinite ease-in-out;
+            filter:
+                drop-shadow(0 0 40px rgba(0, 255, 0, 0.9)) drop-shadow(0 0 80px rgba(0, 255, 0, 0.5)) drop-shadow(0 15px 50px rgba(0, 0, 0, 0.9));
+            border-radius: 25px;
+            position: relative;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #personaje:hover {
+            transform: scale(1.08) translateY(-15px) rotate(2deg);
+            filter:
+                drop-shadow(0 0 60px rgba(0, 255, 0, 1)) drop-shadow(0 0 120px rgba(0, 255, 0, 0.7)) drop-shadow(0 20px 60px rgba(0, 0, 0, 1));
+        }
+
+        @keyframes floatPersonaje {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-18px) rotate(2deg);
+            }
+
+            66% {
+                transform: translateY(-10px) rotate(-2deg);
+            }
+        }
+
+        /* CAJA DE PREGUNTAS ULTRA ÉPICA */
+        #pregunta-box {
+            background: linear-gradient(145deg, rgba(10, 10, 20, 0.98), rgba(20, 20, 40, 0.95));
+            backdrop-filter: blur(25px) saturate(200%);
+            padding: 50px 45px;
+            border-radius: 32px;
+            text-align: center;
+            max-width: 900px;
+            width: 1025px;
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.9),
+                0 0 120px rgba(0, 255, 0, 0.4),
+                inset 0 0 80px rgba(255, 255, 255, 0.03);
+            border: 3px solid rgba(0, 255, 0, 0.5);
+            position: relative;
+            animation: boxEntrance 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 5;
+        }
+
+        @keyframes boxEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(80px) rotateX(-20deg);
             }
 
             100% {
-                transform: translateY(0);
+                opacity: 1;
+                transform: scale(1) translateY(0) rotateX(0deg);
             }
         }
 
-        #pregunta-box {
-            background: rgba(0, 0, 0, 0.75);
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 700px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        /* Borde luminoso rotatorio */
+        #pregunta-box::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg,
+                    rgba(0, 255, 0, 0.8),
+                    rgba(0, 200, 100, 0.5),
+                    rgba(0, 255, 0, 0.8));
+            border-radius: 32px;
+            z-index: -1;
+            opacity: 0;
+            filter: blur(20px);
+            transition: opacity 0.6s;
+            animation: rotateBorder 5s linear infinite;
         }
 
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #pregunta-box:hover::before {
+            opacity: 1;
+        }
+
+        /* Efecto de escaneo */
+        #pregunta-box::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.1) 50%,
+                    transparent 100%);
+            pointer-events: none;
+            animation: scanEffect 4s ease-in-out infinite;
+        }
+
+        @keyframes scanEffect {
+            0% {
+                top: -100%;
+            }
+
+            50% {
+                top: 100%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        /* PREGUNTA CON EFECTO GLITCH */
         #pregunta {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #fff;
+            text-shadow:
+                0 0 30px rgba(0, 255, 0, 0.7),
+                0 6px 16px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(0, 255, 0, 0.4);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            animation: textGlitch 4s ease-in-out infinite;
         }
 
+        @keyframes textGlitch {
+
+            0%,
+            90%,
+            100% {
+                transform: translate(0);
+                text-shadow:
+                    0 0 30px rgba(0, 255, 0, 0.7),
+                    0 6px 16px rgba(0, 0, 0, 0.9);
+            }
+
+            92% {
+                transform: translate(-3px, 3px);
+                text-shadow:
+                    3px 0 0 rgba(255, 0, 0, 0.7),
+                    -3px 0 0 rgba(0, 255, 0, 0.7);
+            }
+
+            94% {
+                transform: translate(3px, -3px);
+                text-shadow:
+                    -3px 0 0 rgba(255, 0, 0, 0.7),
+                    3px 0 0 rgba(0, 255, 0, 0.7);
+            }
+        }
+
+        /* CONTENEDOR DE OPCIONES */
+        #opciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* BOTONES DE OPCIONES ULTRA */
         .opcion {
-            background: #333366;
-            border: none;
-            padding: 12px 20px;
-            margin: 8px;
-            font-size: 18px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #004d00, #003300);
+            border: 3px solid rgba(0, 255, 0, 0.4);
+            padding: 20px 30px;
+            font-size: 19px;
+            font-weight: 700;
+            border-radius: 18px;
             cursor: pointer;
             color: white;
-            transition: 0.3s;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+            box-shadow:
+                0 10px 30px rgba(0, 77, 0, 0.6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.8px;
+        }
+
+        /* Efecto ripple mejorado */
+        .opcion::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.8s, height 0.8s;
+        }
+
+        .opcion:hover::before {
+            width: 500px;
+            height: 500px;
         }
 
         .opcion:hover {
-            opacity: 0.9;
+            background: linear-gradient(135deg, #006600, #004d00);
+            border-color: rgba(0, 255, 0, 0.8);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow:
+                0 15px 45px rgba(0, 255, 0, 0.7),
+                0 0 80px rgba(0, 255, 0, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.25);
         }
 
+        .opcion:active {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* RESPUESTA CORRECTA ÉPICA */
         .correcta {
-            background-color: green !important;
+            background: linear-gradient(135deg, #00ff00, #00cc00) !important;
+            border-color: #00ff00 !important;
+            box-shadow:
+                0 0 80px rgba(0, 255, 0, 1),
+                0 15px 50px rgba(0, 255, 0, 0.8),
+                inset 0 0 40px rgba(255, 255, 255, 0.4) !important;
+            animation: correctPulse 0.8s ease-out;
         }
 
+        @keyframes correctPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(1.15);
+                box-shadow: 0 0 100px rgba(0, 255, 0, 1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* RESPUESTA INCORRECTA ÉPICA */
         .incorrecta {
-            background-color: red !important;
+            background: linear-gradient(135deg, #ff0000, #cc0000) !important;
+            border-color: #ff0000 !important;
+            box-shadow:
+                0 0 80px rgba(255, 0, 0, 1),
+                0 15px 50px rgba(255, 0, 0, 0.8),
+                inset 0 0 40px rgba(255, 255, 255, 0.3) !important;
+            animation: incorrectShake 0.6s ease-out;
         }
 
+        @keyframes incorrectShake {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            20% {
+                transform: translateX(-15px) rotate(-3deg);
+            }
+
+            40% {
+                transform: translateX(15px) rotate(3deg);
+            }
+
+            60% {
+                transform: translateX(-10px) rotate(-2deg);
+            }
+
+            80% {
+                transform: translateX(10px) rotate(2deg);
+            }
+        }
+
+        /* ESTILOS PARA COMODINES */
+        #pregunta-box h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow:
+                0 0 30px rgba(0, 255, 0, 0.9),
+                0 0 60px rgba(0, 255, 0, 0.5);
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 30px rgba(0, 255, 0, 0.9);
+            }
+
+            50% {
+                transform: scale(1.05);
+                text-shadow: 0 0 50px rgba(0, 255, 0, 1);
+            }
+        }
+
+        #pregunta-box p {
+            font-size: 20px;
+            margin: 15px 0;
+            line-height: 1.8;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* BLOQUEO ÉPICO */
         #bloqueo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
+            background: rgba(0, 0, 0, 0.97);
+            backdrop-filter: blur(15px);
+            animation: fadeInBlur 0.5s ease-out;
+        }
+
+        @keyframes fadeInBlur {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+
+            to {
+                opacity: 1;
+                backdrop-filter: blur(15px);
+            }
         }
 
         .bloqueo-mensaje {
-            background: #111;
+            background: linear-gradient(145deg, rgba(20, 20, 30, 1), rgba(10, 10, 20, 1));
             color: white;
-            padding: 30px 40px;
-            border-radius: 15px;
+            padding: 60px 70px;
+            border-radius: 30px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 1),
+                0 0 120px rgba(0, 255, 0, 0.6);
+            border: 4px solid rgba(0, 255, 0, 0.7);
+            animation: modalEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 600px;
+        }
+
+        @keyframes modalEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.4) rotate(-15deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .bloqueo-mensaje h2 {
+            font-size: 38px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(0, 255, 0, 1);
+        }
+
+        .bloqueo-mensaje p {
+            font-size: 20px;
+            margin: 15px 0;
         }
 
         .bloqueo-mensaje button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background-color: #ffaa00;
-            border: none;
-            border-radius: 8px;
+            margin-top: 35px;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #00aa00, #008800);
+            border: 3px solid rgba(0, 255, 0, 0.6);
+            border-radius: 16px;
             color: white;
-            font-size: 16px;
+            font-size: 20px;
+            font-weight: 800;
             cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 170, 0, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bloqueo-mensaje button:hover {
+            background: linear-gradient(135deg, #00cc00, #00aa00);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 45px rgba(0, 255, 0, 0.9);
         }
 
         .hidden {
-            display: none;
+            display: none !important;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .score-display {
+                top: 15px;
+                right: 15px;
+                padding: 12px 20px;
+            }
+
+            .score-display .score-value {
+                font-size: 24px;
+            }
+
+            /* #personaje {
+                width: 280px;
+                margin-bottom: 25px;
+            } */
+
+            /* #pregunta-box {
+                padding: 122px 45px;
+                border-radius: 24px;
+            } */
+
+            #pregunta {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+
+            #opciones {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .opcion {
+                padding: 18px 25px;
+                font-size: 17px;
+            }
+
+            .bloqueo-mensaje {
+                padding: 40px 35px;
+                margin: 20px;
+            }
+
+            #pregunta-box h2 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- 🎵 Música nivel estrella -->
-    <audio id="estrella-music" autoplay loop>
-        <source src="assets/sound/rojo y verde.mp3" type="audio/mpeg" />
+    <!-- Canvas para gotas de sangre -->
+    <canvas id="blood-canvas"></canvas>
+
+    <!-- Manchas de sangre -->
+    <div class="blood-overlay"></div>
+
+    <!-- Contador de puntos -->
+    <div class="score-display">
+        <div class="score-label">Puntaje</div>
+        <div class="score-value" id="score-counter">0/10</div>
+    </div>
+
+    <!-- 🎵 Música de fondo -->
+    <audio id="cuad-music" autoplay loop>
+        <source src="assets/sound/cuad.mp3" type="audio/mpeg" />
     </audio>
 
     <!-- Imagen del personaje -->
-    <img id="personaje" src="assets/image/pin1c.png" alt="personaje estrella" />
+    <img id="personaje" src="assets/image/estrella.png" alt="personaje">
 
     <!-- Cuadro de preguntas -->
     <div id="pregunta-box">
@@ -140,39 +646,37 @@
     <script>
         let preguntas = [];
         let index = 0;
+        let intentosFallidos = 0;
         let puntaje = 0;
-
         const jugador = JSON.parse(localStorage.getItem("jugador"));
+
+        // Actualizar contador de puntos
+        function updateScore() {
+            document.getElementById('score-counter').textContent = `${puntaje}/${preguntas.length}`;
+        }
+
         if (!jugador) {
             alert("❌ No se encontró información del jugador.");
             window.location.href = "index.html";
         } else {
-            const yaJugo = localStorage.getItem(`jugador_terminado_${jugador.id}_estrella`);
-            if (yaJugo === "true") {
-                const jugadorGuardado = JSON.parse(localStorage.getItem("jugador")) || { nombre: "Invitado", id: "-", puntos: 0 };
-                document.getElementById("mensaje-bloqueo").innerHTML = `
-          <h2>⚠️ Ya has completado este nivel</h2>
-          <p>No puedes volver a jugar.</p>
-          <p><strong>Jugador:</strong> ${jugadorGuardado.nombre}</p>
-          <p><strong>Número:</strong> ${jugadorGuardado.id}</p>
-          <p><strong>Puntaje final:</strong> ${jugadorGuardado.puntosEstrella || 0}/10</p>
-          <button onclick="location.href='index.html'">Volver al inicio</button>
-        `;
-                document.getElementById("bloqueo").classList.remove("hidden");
-            } else {
-                cargarPreguntas();
-            }
+            cargarPreguntas();
         }
 
         async function cargarPreguntas() {
+
             const res = await fetch("preguntas_estrella.json");
             const data = await res.json();
             preguntas = data.principales.sort(() => 0.5 - Math.random()).slice(0, 10);
+            updateScore();
             mostrarPregunta();
         }
 
         function mostrarPregunta() {
             if (index >= preguntas.length) {
+                if (intentosFallidos <= 2) {
+                    mostrarComodines();
+                    return;
+                }
                 mostrarResultado();
                 return;
             }
@@ -195,42 +699,128 @@
             const botones = document.querySelectorAll(".opcion");
             botones.forEach(b => b.disabled = true);
 
-            if (seleccion === correcta) {
+            const pregunta = preguntas[index];
+            const clave = pregunta.clave ? pregunta.clave.toLowerCase() : "";
+
+            // ✅ Se valida si la selección contiene la palabra clave o coincide parcialmente
+            const esCorrecta =
+                seleccion.toLowerCase().includes(clave) ||
+                clave.includes(seleccion.toLowerCase()) ||
+                seleccion.toLowerCase().includes(correcta.toLowerCase()) ||
+                correcta.toLowerCase().includes(seleccion.toLowerCase());
+
+            if (esCorrecta) {
                 boton.classList.add("correcta");
                 puntaje++;
+                updateScore();
+                mostrarComentario(pregunta.comentario || pregunta.respuesta, true);
             } else {
                 boton.classList.add("incorrecta");
+
+                // 🔥 Marcar el botón correcto aunque el texto no sea idéntico
                 botones.forEach(b => {
-                    if (b.textContent === correcta) b.classList.add("correcta");
+                    if (
+                        b.textContent.toLowerCase().includes(clave) ||
+                        clave.includes(b.textContent.toLowerCase()) ||
+                        correcta.toLowerCase().includes(b.textContent.toLowerCase())
+                    ) {
+                        b.classList.add("correcta");
+                    }
                 });
+
+                intentosFallidos++;
+                mostrarComentario(pregunta.comentario || pregunta.respuesta, false);
             }
 
+            // Avanza después de mostrar el comentario
             setTimeout(() => {
+                const mensaje = document.getElementById("mensaje-thanos");
+                if (mensaje) mensaje.remove(); // quitar el mensaje antes de la siguiente pregunta
                 index++;
                 mostrarPregunta();
-            }, 1600);
+            }, 3500);
+        }
+        function mostrarComentario(texto, correcto) {
+            const mensaje = document.createElement("div");
+            mensaje.id = "mensaje-thanos";
+            mensaje.textContent = texto;
+            mensaje.style.position = "fixed";
+            mensaje.style.bottom = "50px";
+            mensaje.style.left = "50%";
+            mensaje.style.transform = "translateX(-50%)";
+            mensaje.style.padding = "20px 40px";
+            mensaje.style.borderRadius = "20px";
+            mensaje.style.fontSize = "20px";
+            mensaje.style.maxWidth = "80%";
+            mensaje.style.textAlign = "center";
+            mensaje.style.zIndex = "999";
+            mensaje.style.color = "#fff";
+            mensaje.style.textShadow = "0 0 20px rgba(0,255,0,0.8)";
+            mensaje.style.transition = "opacity 0.5s ease";
+            mensaje.style.opacity = "0";
+            mensaje.style.backdropFilter = "blur(10px)";
+            mensaje.style.boxShadow = correcto
+                ? "0 0 40px rgba(0,255,0,0.8)"
+                : "0 0 40px rgba(255,0,0,0.8)";
+            mensaje.style.background = correcto
+                ? "rgba(0,100,0,0.7)"
+                : "rgba(100,0,0,0.7)";
+
+            document.body.appendChild(mensaje);
+            setTimeout(() => (mensaje.style.opacity = "1"), 100);
+
+            // Desaparece lentamente
+            setTimeout(() => {
+                mensaje.style.opacity = "0";
+                setTimeout(() => mensaje.remove(), 500);
+            }, 8000);
+        }
+
+        async function mostrarComodines() {
+
+            const res = await fetch("preguntas_estrella.json");
+            const data = await res.json();
+            const comodines = data.comodin.sort(() => 0.5 - Math.random());
+
+            preguntas = comodines;
+            index = 0;
+
+            document.getElementById("pregunta-box").innerHTML = `
+                <h2>🟢 COMODINES ACTIVADOS</h2>
+                <p style="font-size: 22px; margin: 25px 0; text-shadow: 0 0 20px rgba(0, 255, 0, 0.6);">
+                    ¡Tienes preguntas extra para recuperar puntos!
+                </p>
+                <div id="pregunta"></div>
+                <div id="opciones"></div>
+            `;
+
+            setTimeout(() => {
+                mostrarPregunta();
+            }, 2500);
         }
 
         function mostrarResultado() {
+            const jugador = JSON.parse(localStorage.getItem("jugador")) || { id: 0, nombre: "Invitado" };
             const notaFinal = puntaje;
 
             document.getElementById("pregunta-box").innerHTML = `
-        <h2>🌟 Nivel completado</h2>
-        <p>Jugador: ${jugador.nombre}</p>
-        <p>Número: ${jugador.id}</p>
-        <p>Puntaje final: ${notaFinal}/10</p>
-      `;
+                <h2 style="font-size: 42px; margin-bottom: 30px;">✅ NIVEL COMPLETADO</h2>
+                <p style="font-size: 24px; margin: 15px 0;"><strong>Jugador:</strong> ${jugador.nombre}</p>
+                <p style="font-size: 24px; margin: 15px 0;"><strong>Número:</strong> ${jugador.id}</p>
+                <p style="font-size: 32px; margin: 25px 0; color: #00ff00; text-shadow: 0 0 30px rgba(0, 255, 0, 1);">
+                    <strong>Puntaje final: ${notaFinal}/10</strong>
+                </p>
+            `;
 
-            jugador.puntosEstrella = notaFinal;
+            jugador.puntos = notaFinal;
             localStorage.setItem("jugador", JSON.stringify(jugador));
-            localStorage.setItem(`jugador_terminado_${jugador.id}_estrella`, "true");
+            // localStorage.setItem(`jugador_terminado_${jugador.id}`, "true");
 
             const historial = JSON.parse(localStorage.getItem("resultados") || "[]");
             historial.push({
                 nombre: jugador.nombre,
                 id: jugador.id,
                 puntos: notaFinal,
-                nivel: "Estrella",
                 hora: new Date().toLocaleString()
             });
             localStorage.setItem("resultados", JSON.stringify(historial));
@@ -238,14 +828,141 @@
 
         // Activar música al primer clic o toque
         window.addEventListener("click", () => {
-            const music = document.getElementById("estrella-music");
+            const music = document.getElementById("cuad-music");
             if (music && music.paused) music.play().catch(() => { });
         }, { once: true });
 
         window.addEventListener("touchstart", () => {
-            const music = document.getElementById("estrella-music");
+            const music = document.getElementById("cuad-music");
             if (music && music.paused) music.play().catch(() => { });
         }, { once: true });
+    </script>
+
+    <script>
+        // Sistema de gotas de sangre mejorado
+        const canvas = document.getElementById('blood-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const splatters = [];
+
+        class BloodDrop {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 4 + 3;
+                this.speed = Math.random() * 3 + 2;
+                this.opacity = 1;
+                this.trail = [];
+            }
+
+            update() {
+                this.y += this.speed;
+                this.speed += 0.1;
+
+                this.trail.push({ x: this.x, y: this.y, size: this.size });
+                if (this.trail.length > 10) {
+                    this.trail.shift();
+                }
+
+                if (this.y > canvas.height - 50) {
+                    // Crear salpicadura
+                    for (let i = 0; i < 5; i++) {
+                        const splatter = {
+                            x: this.x + (Math.random() - 0.5) * 20,
+                            y: canvas.height - 10,
+                            vx: (Math.random() - 0.5) * 4,
+                            vy: -(Math.random() * 3 + 2),
+                            size: Math.random() * 2 + 1,
+                            life: 30
+                        };
+                        splatters.push(splatter);
+                    }
+                    this.reset();
+                }
+            }
+
+            draw() {
+                // Dibujar rastro
+                this.trail.forEach((pos, index) => {
+                    const trailOpacity = (index / this.trail.length) * this.opacity;
+                    ctx.fillStyle = `rgba(200, 0, 0, ${trailOpacity * 0.5})`;
+                    ctx.beginPath();
+                    ctx.arc(pos.x, pos.y, pos.size * 0.6, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Dibujar gota principal
+                ctx.fillStyle = `rgba(200, 0, 0, ${this.opacity})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(200, 0, 0, 0.8)';
+
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Punta de la gota
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y + this.size);
+                ctx.lineTo(this.x - this.size * 0.3, this.y + this.size * 1.5);
+                ctx.lineTo(this.x + this.size * 0.3, this.y + this.size * 1.5);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        // Crear gotas
+        const bloodDrops = [];
+        for (let i = 0; i < 20; i++) {
+            bloodDrops.push(new BloodDrop());
+        }
+
+        function animateBlood() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Actualizar y dibujar gotas
+            bloodDrops.forEach(drop => {
+                drop.update();
+                drop.draw();
+            });
+
+            // Actualizar salpicaduras
+            for (let i = splatters.length - 1; i >= 0; i--) {
+                const splat = splatters[i];
+                splat.x += splat.vx;
+                splat.y += splat.vy;
+                splat.vy += 0.2;
+                splat.life--;
+
+                ctx.fillStyle = `rgba(139, 0, 0, ${splat.life / 30})`;
+                ctx.beginPath();
+                ctx.arc(splat.x, splat.y, splat.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                if (splat.life <= 0) {
+                    splatters.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animateBlood);
+        }
+
+        animateBlood();
+
+        // Ajustar canvas al redimensionar
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 

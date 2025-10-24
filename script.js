@@ -24,19 +24,21 @@ function joinGame() {
     const id = parseInt(document.getElementById("jugador").value.trim());
     const nickInput = document.getElementById("nickname").value.trim().toUpperCase();
 
-    const jugador = jugadores.find(j => j.id === id);
-
-    if (!jugador) {
-        mostrarNotificacion("❌ Número de jugador inválido.", "error");
+    // Validar que ingresaron algo
+    if (!id || !nickInput) {
+        mostrarNotificacion("❌ Por favor completa todos los campos.", "error");
         return;
     }
 
-    if (jugador.nick !== nickInput) {
-        mostrarNotificacion("❌ Nick incorrecto para ese número de jugador.", "error");
-        return;
-    }
+    // Crear jugador con los datos ingresados
+    const jugador = {
+        id: id,
+        nombre: nickInput,
+        nick: nickInput,
+        puntos: 0
+    };
 
-    // Mostrar modal de confirmación ANTES del mensaje de bienvenida
+    // Mostrar modal de confirmación
     mostrarModalConfirmacion(jugador);
 }
 
@@ -62,15 +64,6 @@ function mostrarModalConfirmacion(jugador) {
         // Guardar y redirigir
         // Guardar y redirigir tras un breve delay
         setTimeout(() => {
-            const yaJugo = localStorage.getItem(`jugador_terminado_${jugador.id}`);
-
-            if (yaJugo === "true") {
-                const datosGuardados = JSON.parse(localStorage.getItem("jugador")) || { nombre: "Invitado", id: "-", puntos: 0 };
-                alert(`⚠️ Ya completaste este nivel.\n\nJugador: ${datosGuardados.nombre}\nNúmero: ${datosGuardados.id}\nPuntaje final: ${datosGuardados.puntos || 0}/10`);
-                return;
-            }
-
-
             localStorage.setItem("jugador", JSON.stringify(jugador));
             window.location.href = "listjug.html";
         }, 1500);

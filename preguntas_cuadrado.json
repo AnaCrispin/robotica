@@ -1,114 +1,237 @@
 {
     "principales": [
         {
-            "pregunta": "¿Qué es un robot industrial?",
+            "pregunta": "¿Con quién SÍ compartes tu contraseña, papu del universo?",
             "opciones": [
-                "Un juguete automático",
-                "Una máquina programable para tareas",
-                "Un ordenador portátil"
+                "Con nadie, ni tu bro más fiel, ni tu ex, ni tu crush con filtro bonito",
+                "Con tu crush, pa’ demostrar amor del bueno",
+                "Con cualquiera que te hable bonito por WhatsApp"
             ],
-            "respuesta": "Una máquina programable para tareas"
+            "respuesta": "Con nadie, bro. Las contraseñas son como las gemas del infinito: solo uno puede tenerlas.",
+            "clave": "nadie",
+            "comentario": "Sabio, papu. Las contraseñas son sagradas, no se comparten ni con el mismísimo destino."
         },
         {
-            "pregunta": "¿Cuál es una ventaja de usar robots en la industria?",
+            "pregunta": "Tu ex te pide tu Netflix porque 'extraña verte en HD'. ¿Qué haces?",
             "opciones": [
-                "Mayor cansancio",
-                "Mayor velocidad y precisión",
-                "Menor productividad"
+                "Se la das porque el amor era verdadero",
+                "Le dices ‘NO, mortal’ y cambias todas tus contraseñas",
+                "Le das una falsa pa’ que sufra el chasquido del engaño"
             ],
-            "respuesta": "Mayor velocidad y precisión"
+            "respuesta": "Le dices ‘NO, mortal’ y cambias todas tus contraseñas. El amor se fue, pero el algoritmo queda.",
+            "clave": "NO",
+            "comentario": "Fiel al camino del equilibrio. El algoritmo no se comparte, ni por nostalgia."
         },
         {
-            "pregunta": "¿Qué parte permite el movimiento en un robot?",
+            "pregunta": "¿Qué es eso de la autenticación de dos factores (2FA)?",
             "opciones": [
-                "Sensor",
-                "Actuador",
-                "Pantalla"
+                "Usar dos contraseñas como si fueran guantes del infinito",
+                "Verificar tu identidad con contraseña y un código extra, digno de los dioses",
+                "Tener dos cuentas pa’ hacerte el misterioso"
             ],
-            "respuesta": "Actuador"
+            "respuesta": "Verificar tu identidad con contraseña + código extra. Dos barreras, un solo destino: tu seguridad.",
+            "clave": "código",
+            "comentario": "Excelente. Dos barreras hacen un muro que ni los dioses del hackeo pueden cruzar."
         },
         {
-            "pregunta": "¿Qué es un sensor en robótica?",
+            "pregunta": "Te llega un SMS que dice: 'Tu cuenta será eliminada, entra aquí'. ¿Qué haces?",
             "opciones": [
-                "Un motor",
-                "Un dispositivo de entrada de datos",
-                "Una lámpara"
+                "Entras en pánico y haces clic como si no hubiera mañana",
+                "Lo ignoras, porque eso huele a phishing del más oscuro rincón del cosmos",
+                "Lo reenvías pa’ que todos caigan contigo"
             ],
-            "respuesta": "Un dispositivo de entrada de datos"
+            "respuesta": "Lo ignoras, guerrero. Es phishing, una trampa del inframundo digital.",
+            "clave": "phishing",
+            "comentario": "Buen instinto, soldado del WiFi. Has esquivado una emboscada del lado oscuro."
         },
         {
-            "pregunta": "¿Qué controla las decisiones del robot?",
+            "pregunta": "¿Cuál es la PEOR contraseña del multiverso?",
             "opciones": [
-                "Controlador o CPU",
-                "Ruedas",
-                "Cables"
+                "Tu cumple o el clásico ‘123456’",
+                "Una frase larga con símbolos y energía cósmica",
+                "Una mezcla loca de letras y números místicos"
             ],
-            "respuesta": "Controlador o CPU"
+            "respuesta": "Tu cumple o ‘123456’. Eso es como poner una puerta de cartón en Mordor.",
+            "clave": "123456",
+            "comentario": "Esa clave no resiste ni un suspiro. Es como gritar ‘entra’ al caos digital."
         },
         {
-            "pregunta": "¿Qué tipo de robot sigue una línea en el suelo?",
+            "pregunta": "¿Cada cuánto cambias tus contraseñas, guardián del WiFi?",
             "opciones": [
-                "Robot explorador",
-                "Robot seguidor de línea",
-                "Robot nadador"
+                "Nunca, si el universo te respeta",
+                "Cada 3 o 6 lunas cósmicas, o si alguien intenta invadir tu reino",
+                "Solo cuando ya te hackearon y lloras en posición fetal"
             ],
-            "respuesta": "Robot seguidor de línea"
+            "respuesta": "Cada 3-6 meses o si hay una brecha. La prevención es el poder del sabio.",
+            "clave": "meses",
+            "comentario": "Renovar tus claves es renovar tu poder. Que no te tome el caos desprevenido."
         },
         {
-            "pregunta": "¿Cuál es un uso común de robots industriales?",
+            "pregunta": "Un desconocido en Instagram te dice: 'Gana dinero fácil, dame tu email y contraseña'. ¿Qué haces?",
             "opciones": [
-                "Pintar autos",
-                "Hacer tareas escolares",
-                "Lavar ropa"
+                "Le das tus datos porque el multiverso económico anda duro",
+                "Lo reportas y bloqueas, papu. Es una estafa más falsa que el amor eterno",
+                "Le das un correo falso pa’ reírte del caos"
             ],
-            "respuesta": "Pintar autos"
+            "respuesta": "Lo reportas y bloqueas, guerrero. La avaricia es el camino al hackeo.",
+            "clave": "bloqueas",
+            "comentario": "Buen reflejo, titán. Donde hay promesas falsas, hay malware esperando."
         },
         {
-            "pregunta": "¿Qué lenguaje se usa para programar robots?",
+            "pregunta": "¿Por qué no debes usar la misma contraseña en todas tus cuentas?",
             "opciones": [
-                "Python",
-                "HTML",
-                "Photoshop"
+                "Porque es aburrido",
+                "Porque si hackean una, bro, hackean TODAS",
+                "Porque te confundes menos así"
             ],
-            "respuesta": "Python"
+            "respuesta": "Porque si hackean una, hackean todas. Es como poner todas las gemas en un solo guante.",
+            "clave": "TODAS",
+            "comentario": "Jamás pongas todas tus gemas en un solo guante. El caos se propaga rápido."
         },
         {
-            "pregunta": "¿Qué tipo de energía usan comúnmente los robots?",
+            "pregunta": "¿Dónde guardas tus contraseñas, viajero del WiFi?",
             "opciones": [
-                "Energía solar o eléctrica",
-                "Carbón",
-                "Gasolina"
+                "En una nota del celular que dice ‘contraseñas no tocar’",
+                "En un gestor como Bitwarden o 1Password, forjado por sabios del ciberespacio",
+                "En un papelito pegado con cinta mágica en tu escritorio"
             ],
-            "respuesta": "Energía solar o eléctrica"
+            "respuesta": "En un gestor de contraseñas, bro. No seas de los que confían en el post-it.",
+            "clave": "gestor",
+            "comentario": "Los gestores son tus gemas digitales. Guárdalas con sabiduría."
         },
         {
-            "pregunta": "¿Qué función cumple un brazo robótico?",
+            "pregunta": "Conectarte a un WiFi público sin VPN es como...",
             "opciones": [
-                "Sujetar o mover objetos",
-                "Hablar",
-                "Jugar videojuegos"
+                "Gritar tus contraseñas en la calle del multiverso",
+                "Navegar a la velocidad del rayo con estilo",
+                "Ahorrar megas sin riesgos, según tú"
             ],
-            "respuesta": "Sujetar o mover objetos"
+            "respuesta": "Gritar tus contraseñas en la calle. Te espían hasta los de otra galaxia.",
+            "clave": "WiFi",
+            "comentario": "Nunca te conectes sin escudo. El WiFi público es el campo de batalla invisible."
+        },
+        {
+            "pregunta": "¿Qué método de 2FA es el más poderoso?",
+            "opciones": [
+                "SMS, el método de los ingenuos",
+                "App autenticadora, el arte ancestral del guerrero digital",
+                "Correo electrónico, la ilusión del control"
+            ],
+            "respuesta": "La app autenticadora. Solo los dignos la usan.",
+            "clave": "autenticadora",
+            "comentario": "Has elegido el camino de los fuertes. Las apps autenticadoras no fallan."
+        },
+        {
+            "pregunta": "Tu mamá te da su contraseña de Facebook pa’ que la ayudes. ¿Qué haces?",
+            "opciones": [
+                "La guardas, por si un día te da curiosidad",
+                "La ayudas y le dices: ‘Cámbiala, doñita del poder’",
+                "Aprovechas pa’ revisar sus mensajes secretos 👀"
+            ],
+            "respuesta": "La ayudas y le dices que la cambie. La confianza es buena, pero la seguridad es sagrada.",
+            "clave": "cambie",
+            "comentario": "Buen hijo digital. A las madres se las protege, no se las hackea."
+        },
+        {
+            "pregunta": "¿Cuál de estas contraseñas es digna del guante del infinito?",
+            "opciones": [
+                "M1P3rr0S3Ll4m4F1r3!2024",
+                "miperro123",
+                "password"
+            ],
+            "respuesta": "M1P3rr0S3Ll4m4F1r3!2024 — el poder absoluto concentrado en una clave.",
+            "clave": "M1P3rr0S3Ll4m4F1r3!2024",
+            "comentario": "Poder absoluto en una sola clave... pero recuerda, gran poder implica gran responsabilidad."
+        },
+        {
+            "pregunta": "Te llega un correo que dice: ‘Ganaste un iPhone’. ¿Qué haces?",
+            "opciones": [
+                "Corres a poner tu contraseña como si fuera la gema del alma",
+                "Lo borras, porque hasta Thanos sabe que es SCAM",
+                "Lo compartes pa’ que todos caigan contigo"
+            ],
+            "respuesta": "Lo borras, campeón. Nadie regala iPhones en este universo.",
+            "clave": "borras",
+            "comentario": "Nadie regala nada en este universo, menos aún un iPhone. Has resistido la tentación."
+        },
+        {
+            "pregunta": "¿Qué significa el candadito 🔒 en la URL, sabio del internet?",
+            "opciones": [
+                "Que es una página aburrida sin memes",
+                "Que usa HTTPS y te protege como armadura vibranium",
+                "Que está maldita por siempre jamás"
+            ],
+            "respuesta": "Que usa HTTPS y es más segura. Si no tiene el candado, corre.",
+            "clave": "HTTPS",
+            "comentario": "El candado es tu escudo digital. Si no está, huye como si el caos te persiguiera."
         }
     ],
     "comodin": [
         {
-            "pregunta": "¿Qué es la automatización industrial?",
+            "pregunta": "Tu amigo publica: ‘Mi contraseña es 123456 jaja’. ¿Qué le dices?",
             "opciones": [
-                "Decoración de fábricas",
-                "Uso de tecnología para controlar procesos",
-                "Pintar con máquinas"
+                "Nada, que aprenda del dolor",
+                "Le dices: ‘Te van a hackear en 3... 2... 1...’",
+                "Lo compartes pa’ que todos vean su destino trágico"
             ],
-            "respuesta": "Uso de tecnología para controlar procesos"
+            "respuesta": "Le adviertes que lo van a hackear en 3... 2... 1... — porque el universo no perdona la estupidez.",
+            "clave": "hackear",
+            "comentario": "Le diste la advertencia. Ahora solo el destino decidirá su conexión."
         },
         {
-            "pregunta": "¿Qué es un PLC?",
+            "pregunta": "¿Qué es el phishing, viajero del ciberespacio?",
             "opciones": [
-                "Un tipo de robot",
-                "Un controlador lógico programable",
-                "Un circuito musical"
+                "Un deporte acuático para dioses aburridos",
+                "El arte oscuro de engañar y robar datos",
+                "Una red social para pescadores digitales"
             ],
-            "respuesta": "Un controlador lógico programable"
+            "respuesta": "Engañar a la gente pa’ robar sus datos. El enemigo invisible del WiFi.",
+            "clave": "robar",
+            "comentario": "Reconociste la trampa. El enemigo del WiFi no duerme, pero tú estás despierto."
+        },
+        {
+            "pregunta": "¿Por qué es peligroso hacer clic en links de desconocidos?",
+            "opciones": [
+                "Porque te pueden llevar al abismo del hackeo eterno",
+                "Porque gastan tus megas sagradas",
+                "No es peligroso, solo spam... según los ingenuos"
+            ],
+            "respuesta": "Porque te pueden llevar a sitios falsos donde los hackers celebran con tus datos.",
+            "clave": "hackers",
+            "comentario": "Buena jugada. Esos links son portales al infierno digital."
+        },
+        {
+            "pregunta": "Te hackean y cambian la clave. ¿Qué haces, guerrero?",
+            "opciones": [
+                "Lloras y aceptas tu destino como un mártir digital",
+                "Usas ‘Olvidé mi contraseña’ y recuperas tu poder",
+                "Creas una nueva cuenta y finges que nada pasó"
+            ],
+            "respuesta": "Usas ‘Olvidé mi contraseña’. El que persevera, vence el caos.",
+            "clave": "Olvidé",
+            "comentario": "Reclamaste tu poder. El caos retrocede ante tu clic en ‘Olvidé mi contraseña’."
+        },
+        {
+            "pregunta": "¿Qué es un ataque de fuerza bruta, bro del infinito?",
+            "opciones": [
+                "Cuando te golpean pa’ sacar la clave",
+                "Probar millones de combinaciones hasta romper tu seguridad",
+                "Un videojuego del caos"
+            ],
+            "respuesta": "Probar millones de combinaciones. Es como un Thanos chiquito golpeando tu puerta digital sin parar.",
+            "clave": "millones",
+            "comentario": "Así es, los bots no descansan. Pero tú tienes el poder de resistirlos."
+        },
+        {
+            "pregunta": "Tu crush te pide tu Insta y tu clave. ¿Qué significa?",
+            "opciones": [
+                "Que te ama con locura cósmica",
+                "🚩RED FLAG🚩 No es amor, es un hacker con cara bonita",
+                "Que quiere hacerte una sorpresa romántica"
+            ],
+            "respuesta": "🚩RED FLAG🚩 No es tu crush, es un hacker con cara bonita. Huye antes del chasquido emocional.",
+            "clave": "RED FLAG",
+            "comentario": "JAJA... ¡Huelo a engaño desde el multiverso! No es amor, es un hacker con filtro bonito."
         }
     ]
 }

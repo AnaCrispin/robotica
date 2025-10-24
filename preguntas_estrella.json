@@ -1,104 +1,160 @@
 {
     "principales": [
         {
-            "pregunta": "¿Qué parte del robot se considera el sistema locomotor?",
+            "pregunta": "Entra a una cafetería elegante y te ofrecen Wi-Fi gratuito con nombre sospechosamente perfecto. ¿Conectas?",
             "opciones": [
-                "Controlador",
-                "Estructura metálica",
-                "Sistema de tracción o ruedas",
-                "Sistema hidráulico"
+                "Sí, es gratis y se ve confiable, ¿qué podría salir mal?",
+                "Primero verifico el nombre exacto y uso VPN si es necesario — los disfraces son caros aquí",
+                "Me espero, prefiero usar datos y observar desde la sombra"
             ],
-            "respuesta": "Sistema de tracción o ruedas"
+            "respuesta": "Primero verifico el nombre exacto y uso VPN si es necesario — los disfraces son caros aquí.",
+            "clave": "VPN",
+            "comentario": "Él te sonríe mientras mira tu mano temblorosa. Los lujos suelen pagar por trampas; ponte la máscara antes de entrar."
         },
         {
-            "pregunta": "¿Qué componente actúa directamente sobre el entorno en un robot?",
+            "pregunta": "Un correo con aspecto impecable te promete un 'acceso VIP' si haces clic. ¿Reaccionas?",
             "opciones": [
-                "Sensor óptico",
-                "Actuador",
-                "Microcontrolador",
-                "Placa base"
+                "Clic inmediato: las oportunidades no esperan a los indecisos",
+                "Inspecciono el remitente y abro la web escribiendo la URL a mano si parece legítima",
+                "Lo reenvío a mis contactos para que decidan por mí"
             ],
-            "respuesta": "Actuador"
+            "respuesta": "Inspecciono el remitente y abro la web escribiendo la URL a mano si parece legítima.",
+            "clave": "remitente",
+            "comentario": "Aplausos discretos desde la penumbra. La curiosidad sin método es deliciosa para los tramposos."
         },
         {
-            "pregunta": "¿Qué herramienta permite analizar el movimiento de un robot a partir de sus articulaciones?",
+            "pregunta": "Te ofrecen un archivo 'con instrucciones urgentes' por adjunto. ¿Qué haces, cortesmente?",
             "opciones": [
-                "Cinemática directa",
-                "PLC",
-                "Sensor óptico",
-                "Actuador hidráulico"
+                "Lo abro para ver la urgencia, rápido es mejor",
+                "Lo escaneo con antivirus y lo abro solo en un entorno seguro",
+                "Lo guardo y lo dejo para otro momento"
             ],
-            "respuesta": "Cinemática directa"
+            "respuesta": "Lo escaneo con antivirus y lo abro solo en un entorno seguro.",
+            "clave": "antivirus",
+            "comentario": "Tiene gesto de aprobación. No hay prisa para quien sabe que el tiempo compra seguridad."
         },
         {
-            "pregunta": "¿Qué es la cinemática directa en robótica?",
+            "pregunta": "Alguien te sugiere desactivar el antivirus para 'mejorar el rendimiento'. ¿Aceptas el consejo amistoso?",
             "opciones": [
-                "El cálculo de posiciones de los actuadores",
-                "La relación entre posiciones articulares y la posición final del efector",
-                "El diseño de un manipulador",
-                "El cálculo de la velocidad angular"
+                "Claro, la velocidad importa más que la paranoia",
+                "No, prefiero un escudo lento a una caída rápida",
+                "Lo apago un rato para ver qué pasa"
             ],
-            "respuesta": "La relación entre posiciones articulares y la posición final del efector"
+            "respuesta": "No, prefiero un escudo lento a una caída rápida.",
+            "clave": "escudo",
+            "comentario": "Su sonrisa se ensancha: los imprudentes regalan su final con la misma cortesía que usan para pedirlo."
         },
         {
-            "pregunta": "¿Qué sistema controla el ascenso y descenso del ascensor en el laboratorio?",
+            "pregunta": "Al crear una contraseña, ¿qué eliges para no caer en la trampa del olvido ni del hackeo?",
             "opciones": [
-                "PLC con sensores de piso",
-                "Motor de corriente continua",
-                "Sistema neumático",
-                "Cinemática inversa"
+                "Algo fácil de recordar, total, no todo es tan serio",
+                "Una frase larga y única, con símbolos — hermética pero maneable",
+                "Usar la misma de siempre, al menos la recordaré"
             ],
-            "respuesta": "PLC con sensores de piso"
+            "respuesta": "Una frase larga y única, con símbolos — hermética pero maneable.",
+            "clave": "frase",
+            "comentario": "Le encanta oír planes bien pensados. El verdadero poder está en lo que no revelas a la vista."
         },
         {
-            "pregunta": "¿Cuál es el principal objetivo de la cinemática inversa?",
+            "pregunta": "Encuentras un USB en el estacionamiento; brilla como deuda pagada. ¿Qué haces?",
             "opciones": [
-                "Controlar la velocidad de las ruedas",
-                "Determinar la posición de cada articulación para alcanzar un punto",
-                "Medir la temperatura del sistema",
-                "Reducir la fricción"
+                "Lo conecto: acaso contiene la recompensa que espero",
+                "Lo llevo a seguridad o lo destruyo; los regalos abandonados suelen tener precio",
+                "Lo guardo y lo llevo a casa, por si acaso"
             ],
-            "respuesta": "Determinar la posición de cada articulación para alcanzar un punto"
+            "respuesta": "Lo llevo a seguridad o lo destruyo; los regalos abandonados suelen tener precio.",
+            "clave": "seguridad",
+            "comentario": "Sonríe sin mostrar sus dientes. Entregarlo es prudencia; tomarlo es firmar sin leer la letra pequeña."
         },
         {
-            "pregunta": "¿Cuál es una función del sistema sensorial en un robot?",
+            "pregunta": "Te llaman fingiendo ser de tu banco y piden confirmar datos. ¿Cómo actúas?",
             "opciones": [
-                "Mover los motores",
-                "Detectar estímulos del entorno",
-                "Controlar el sistema operativo",
-                "Generar energía eléctrica"
+                "Confías y le das todo para resolverlo rápido",
+                "Cuelgas y llamas al número oficial que sabes, la confianza se gana",
+                "Sigues hablando para ver qué pide exactamente"
             ],
-            "respuesta": "Detectar estímulos del entorno"
+            "respuesta": "Cuelgas y llamas al número oficial que sabes, la confianza se gana.",
+            "clave": "oficial",
+            "comentario": "Aplausos casi silenciosos. Los impostores odian cuando los interrumpes y llamas por tus propios medios."
         },
         {
-            "pregunta": "¿Qué parte del robot procesa la información y toma decisiones?",
+            "pregunta": "Alguien 'te ayuda' a limpiar tu PC gratis mediante acceso remoto. ¿Aceptas el favor?",
             "opciones": [
-                "Controlador",
-                "Actuador",
-                "Sensor",
-                "Chasis"
+                "Sí, deja que lo haga; gusta ayudar a los desconocidos",
+                "No, solo confío en soporte oficial o en alguien que yo designe",
+                "Sí, pero vigilando lo que hace"
             ],
-            "respuesta": "Controlador"
+            "respuesta": "No, solo confío en soporte oficial o en alguien que yo designe.",
+            "clave": "oficial",
+            "comentario": "Él inclina la cabeza con elegancia: la ayuda mal ofrecida es una venda que tapa el robo."
+        }
+    ],
+    "comodin": [
+        {
+            "pregunta": "Un amigo publica su contraseña como broma. ¿Cómo reaccionas, cortesano de la red?",
+            "opciones": [
+                "Me río y lo dejo, cada quien aprende a su manera",
+                "Le escribo en privado para que la cambie antes de que alguien gane la partida",
+                "Lo llamo y lo expongo en público para que aprenda"
+            ],
+            "respuesta": "Le escribo en privado para que la cambie antes de que alguien gane la partida.",
+            "clave": "privado",
+            "comentario": "Amable, pero firme. Un verdadero aliado corrige antes de que el escenario se vuelva tragedia."
         },
         {
-            "pregunta": "¿Cuál es la finalidad principal del estudio de la morfología robótica?",
+            "pregunta": "Un anuncio promete un 'antivirus milagroso' en un banner brillante. ¿Lo descargas?",
             "opciones": [
-                "Conocer las bases legales del uso de robots",
-                "Comprender la estructura mecánica y sus funciones",
-                "Implementar redes neuronales",
-                "Programar el encendido de LEDs"
+                "Sí, suena milagroso y rápido",
+                "Lo busco en la web oficial y reviso reseñas antes de confiar",
+                "Lo instalo, luego lo reporto si algo pasa"
             ],
-            "respuesta": "Comprender la estructura mecánica y sus funciones"
+            "respuesta": "Lo busco en la web oficial y reviso reseñas antes de confiar.",
+            "clave": "oficial",
+            "comentario": "Un aplauso interior. Los milagros pagados en banners rara vez son gratuitos para tu seguridad."
         },
         {
-            "pregunta": "¿Qué elemento se encarga de detectar el piso en el modelo del ascensor?",
+            "pregunta": "Tu navegador alerta que la página no es segura pero su diseño es impecable. ¿Entras?",
             "opciones": [
-                "Sensor de proximidad",
-                "Motor",
-                "Actuador hidráulico",
-                "Microcontrolador"
+                "Sí, la estética justifica el riesgo",
+                "No, cierro; hasta lo bello puede ser veneno bien empaqueado",
+                "Tomo nota y vuelvo después con más armas"
             ],
-            "respuesta": "Sensor de proximidad"
+            "respuesta": "No, cierro; hasta lo bello puede ser veneno bien empaqueado.",
+            "clave": "cierre",
+            "comentario": "Él murmura algo sobre 'bellezas de fachada'. Cerraste la puerta; los que entran por la ventana son los perdedores."
+        },
+        {
+            "pregunta": "Alguien en chat insiste en que compartas tu contraseña por 'verificación'. ¿Qué haces?",
+            "opciones": [
+                "Envías la contraseña, si lo pide será por algo importante",
+                "Nunca comparto contraseñas; verifico por canales oficiales",
+                "Le doy una parte para ver si es suficiente"
+            ],
+            "respuesta": "Nunca comparto contraseñas; verifico por canales oficiales.",
+            "clave": "nunca",
+            "comentario": "Su sonrisa se vuelve más fina. 'Nunca' es una palabra que mantiene tu partida en juego."
+        },
+        {
+            "pregunta": "Al finalizar la jornada, ¿qué práctica es tu ritual de supervivencia digital?",
+            "opciones": [
+                "Apagar el equipo y nada más",
+                "Cerrar sesiones, revisar seguridad y actualizar contraseñas cuando toca",
+                "Ignorar y dejar todo para mañana"
+            ],
+            "respuesta": "Cerrar sesiones, revisar seguridad y actualizar contraseñas cuando toca.",
+            "clave": "cerrar",
+            "comentario": "La disciplina te devuelve vidas. Él aplaude en voz baja: la rutina es la armadura de los prudentes."
+        },
+        {
+            "pregunta": "Te prometen 'recompensa por compartir tu clave' para un juego exclusivo. ¿Aceptas?",
+            "opciones": [
+                "Sí, la recompensa vale cualquier riesgo",
+                "No, mi clave es mi llave; la venta es el único precio que no pago",
+                "Lo pienso y lo consulto con otros"
+            ],
+            "respuesta": "No, mi clave es mi llave; la venta es el único precio que no pago.",
+            "clave": "clave",
+            "comentario": "Te mira con esa calma peligrosa: algunos venden todo menos lo que les mantiene vivos."
         }
     ]
 }

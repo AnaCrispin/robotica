@@ -1,126 +1,160 @@
 {
     "principales": [
         {
-            "pregunta": "¿Qué es la morfología de un robot?",
+            "pregunta": "Estás en una red pública y ves un WiFi abierto. ¿Cuál es tu jugada inteligente?",
             "opciones": [
-                "Es la forma externa y estructura física del robot",
-                "Es el lenguaje de programación utilizado",
-                "Es el circuito eléctrico de control",
-                "Es la velocidad del efector final"
+                "Conectarte sin pensar, la suerte está de tu lado",
+                "Usar una VPN antes de entrar, porque en este juego nadie regala nada",
+                "Compartir el WiFi con otros, así si pasa algo, caen todos"
             ],
-            "respuesta": "Es la forma externa y estructura física del robot"
+            "respuesta": "Usar una VPN antes de entrar, porque en este juego nadie regala nada.",
+            "clave": "VPN",
+            "comentario": "Buena decisión. En este juego, los confiados mueren primero. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué coordenadas utilizan ejes ortogonales para representar posiciones?",
+            "pregunta": "Recibes un mensaje: 'Has ganado un premio, entra a este link'. ¿Qué haría un jugador que quiere seguir con vida?",
             "opciones": [
-                "Coordenadas cartesianas",
-                "Coordenadas esféricas",
-                "Coordenadas cilíndricas",
-                "Coordenadas articulares"
+                "Entrar rápido, la suerte no espera",
+                "Ignorarlo, porque los premios fáciles esconden algo peor",
+                "Reenviarlo a tus amigos, tal vez alguno tenga suerte"
             ],
-            "respuesta": "Coordenadas cartesianas"
+            "respuesta": "Ignorarlo, porque los premios fáciles esconden algo peor.",
+            "clave": "premios",
+            "comentario": "En el juego y en la vida, lo que llega sin esfuerzo siempre cobra su precio. — Gi-hun"
         },
         {
-            "pregunta": "¿Cuál es la función del espacio de trabajo de un robot?",
+            "pregunta": "Tu ex te pide tu contraseña 'solo para ver algo'. ¿Qué haces?",
             "opciones": [
-                "Es el espacio donde el robot puede alcanzar puntos válidos con su extremo",
-                "Es el espacio tridimensional computado",
-                "Es el código de programación del robot",
-                "Es la trayectoria de rotación del robot"
+                "Se la das, total ya la conocía",
+                "Le dices que no, y cambias todas tus contraseñas por si acaso",
+                "Le das una falsa para ver si cae"
             ],
-            "respuesta": "Es el espacio donde el robot puede alcanzar puntos válidos con su extremo"
+            "respuesta": "Le dices que no, y cambias todas tus contraseñas por si acaso.",
+            "clave": "no",
+            "comentario": "No se trata de desconfianza, se trata de supervivencia. Las segundas oportunidades no existen aquí. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué tipo de coordenadas utiliza los ángulos de las articulaciones del robot?",
+            "pregunta": "Estás creando una nueva contraseña. ¿Qué estrategia usas?",
             "opciones": [
-                "Coordenadas articulares",
-                "Coordenadas cartesianas",
-                "Coordenadas cilíndricas",
-                "Coordenadas polares"
+                "Tu cumpleaños o el nombre de tu perro",
+                "Una mezcla de letras, números y símbolos; una clave que nadie pueda adivinar",
+                "La misma de siempre, para no olvidarte"
             ],
-            "respuesta": "Coordenadas articulares"
+            "respuesta": "Una mezcla de letras, números y símbolos; una clave que nadie pueda adivinar.",
+            "clave": "mezcla",
+            "comentario": "La seguridad no es suerte, es estrategia. En este juego, cada carácter cuenta. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué es la cinemática inversa en robótica?",
+            "pregunta": "Tu correo te dice que cambies tu contraseña urgentemente desde un link. ¿Qué haces?",
             "opciones": [
-                "Es el cálculo de articulaciones para alcanzar una posición deseada",
-                "Es el análisis de materiales",
-                "Es la medición del voltaje del sensor",
-                "Es la forma del brazo robótico"
+                "Haces clic sin pensar",
+                "Revisas el remitente y entras por la página oficial",
+                "Ignoras el mensaje, no parece grave"
             ],
-            "respuesta": "Es el cálculo de articulaciones para alcanzar una posición deseada"
+            "respuesta": "Revisas el remitente y entras por la página oficial.",
+            "clave": "remitente",
+            "comentario": "No confíes ni en las reglas si no las escribiste tú. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué determina el número de grados de libertad (GDL) en un robot?",
+            "pregunta": "Estás en un cibercafé y ves una sesión abierta. ¿Qué haces?",
             "opciones": [
-                "El número de movimientos independientes que puede realizar",
-                "La longitud de los cables",
-                "La batería utilizada",
-                "El tipo de pintura del robot"
+                "Curioseas, nadie se va a enterar",
+                "Cierras sesión y avisas al encargado",
+                "Publicas algo solo por diversión"
             ],
-            "respuesta": "El número de movimientos independientes que puede realizar"
+            "respuesta": "Cierras sesión y avisas al encargado.",
+            "clave": "cierras",
+            "comentario": "La verdadera fuerza está en hacer lo correcto aunque nadie mire. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué representa un espacio de configuración?",
+            "pregunta": "Te ofrecen una app fuera de la tienda oficial. Dice que es premium y gratis. ¿Tu decisión?",
             "opciones": [
-                "Conjunto de todas las posibles configuraciones de un robot",
-                "La distancia entre sensores",
-                "El consumo eléctrico del sistema",
-                "El volumen del efector final"
+                "La instalas, total nadie se entera",
+                "La rechazas, porque en este juego nada es gratis",
+                "Le pides a un amigo que la pruebe primero"
             ],
-            "respuesta": "Conjunto de todas las posibles configuraciones de un robot"
+            "respuesta": "La rechazas, porque en este juego nada es gratis.",
+            "clave": "gratis",
+            "comentario": "La tentación es el primer paso hacia la derrota. Mantén la mente fría. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué significa que un robot sea redundante?",
+            "pregunta": "Un desconocido te dice: 'Dame tu contraseña y te haré famoso'. ¿Qué haces?",
             "opciones": [
-                "Que tiene más grados de libertad de los necesarios",
-                "Que está duplicado en sistema",
-                "Que no se puede mover",
-                "Que repite siempre las mismas acciones"
+                "Se la das, todos quieren reconocimiento",
+                "Lo bloqueas, la fama no vale tu privacidad",
+                "Le das una falsa solo por curiosidad"
             ],
-            "respuesta": "Que tiene más grados de libertad de los necesarios"
-        },
-        {
-            "pregunta": "¿Qué son los ángulos RPY?",
-            "opciones": [
-                "Roll, Pitch y Yaw: rotaciones en X, Y, Z",
-                "Red, Power y Yoke",
-                "Resistencia, Potencia y Yugo",
-                "Rotación, Presión y Yunque"
-            ],
-            "respuesta": "Roll, Pitch y Yaw: rotaciones en X, Y, Z"
-        },
-        {
-            "pregunta": "¿Qué describe mejor el concepto de espacio de tarea?",
-            "opciones": [
-                "El espacio donde se especifican posiciones y orientaciones deseadas",
-                "El tamaño del microcontrolador",
-                "El nivel de voltaje de las bobinas",
-                "El número de sensores activos"
-            ],
-            "respuesta": "El espacio donde se especifican posiciones y orientaciones deseadas"
+            "respuesta": "Lo bloqueas, la fama no vale tu privacidad.",
+            "clave": "privacidad",
+            "comentario": "No se trata de ganar, se trata de no perderte a ti mismo. — Gi-hun"
         }
     ],
     "comodin": [
         {
-            "pregunta": "¿Qué es un sistema local de coordenadas del robot?",
+            "pregunta": "Un amigo publica su contraseña en redes como broma. ¿Qué haces tú?",
             "opciones": [
-                "Un sistema donde el robot es el origen",
-                "El sistema de coordenadas de fábrica",
-                "La rotación absoluta del efector",
-                "El sistema de referencia del operador"
+                "Nada, cada quien juega su partida",
+                "Le adviertes que acaba de perder una vida en este juego",
+                "Lo compartes para reírte también"
             ],
-            "respuesta": "Un sistema donde el robot es el origen"
+            "respuesta": "Le adviertes que acaba de perder una vida en este juego.",
+            "clave": "vida",
+            "comentario": "Los verdaderos compañeros no se ríen de los errores, los corrigen antes del final. — Gi-hun"
         },
         {
-            "pregunta": "¿Qué tipo de coordenadas utilizan distancia radial, ángulo y altura?",
+            "pregunta": "¿Qué es el phishing en este juego digital?",
             "opciones": [
-                "Coordenadas cilíndricas",
-                "Coordenadas cartesianas",
-                "Coordenadas ortogonales",
-                "Coordenadas homogéneas"
+                "Una forma de robar contraseñas disfrazada de oportunidad",
+                "Una técnica para ganar seguidores",
+                "Un truco para conseguir descuentos"
             ],
-            "respuesta": "Coordenadas cilíndricas"
+            "respuesta": "Una forma de robar contraseñas disfrazada de oportunidad.",
+            "clave": "robar",
+            "comentario": "A veces, la bondad es una trampa. No todo lo que parece ayuda, salva. — Gi-hun"
+        },
+        {
+            "pregunta": "Te hackean y cambian tu clave. ¿Cómo te levantas?",
+            "opciones": [
+                "Lloras y empiezas otra cuenta",
+                "Usas 'Olvidé mi contraseña' y recuperas el control",
+                "Cierras todo y te rindes"
+            ],
+            "respuesta": "Usas 'Olvidé mi contraseña' y recuperas el control.",
+            "clave": "control",
+            "comentario": "Caer no es perder. Perder es no intentarlo otra vez. — Gi-hun"
+        },
+        {
+            "pregunta": "Tu crush te pide tu Instagram y tu clave. ¿Qué haces?",
+            "opciones": [
+                "Se la das, el amor lo puede todo",
+                "🚩RED FLAG🚩 No es amor, es curiosidad peligrosa",
+                "Le haces caso, seguro no hay maldad"
+            ],
+            "respuesta": "🚩RED FLAG🚩 No es amor, es curiosidad peligrosa.",
+            "clave": "RED FLAG",
+            "comentario": "El amor sin límites termina siendo otro tipo de juego... y no todos ganan. — Gi-hun"
+        },
+        {
+            "pregunta": "¿Qué es un ataque de fuerza bruta?",
+            "opciones": [
+                "Cuando alguien prueba millones de contraseñas hasta acertar",
+                "Una pelea digital de alta intensidad",
+                "Un virus que hace ruido pero no daña"
+            ],
+            "respuesta": "Cuando alguien prueba millones de contraseñas hasta acertar.",
+            "clave": "millones",
+            "comentario": "La fuerza sin estrategia solo destruye. Piensa antes de atacar. — Gi-hun"
+        },
+        {
+            "pregunta": "Un sitio web te pide tus datos sin el candado 🔒 en la URL. ¿Qué haces?",
+            "opciones": [
+                "Los pones, no parece importante",
+                "Sales de inmediato, sin seguridad no hay confianza",
+                "Pruebas igual, tal vez funcione"
+            ],
+            "respuesta": "Sales de inmediato, sin seguridad no hay confianza.",
+            "clave": "seguridad",
+            "comentario": "La confianza se gana, no se pide. Hasta el sistema más seguro puede mentir. — Gi-hun"
         }
     ]
 }
